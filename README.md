@@ -11,6 +11,7 @@ This application seeks to provide inclusive, equitable and quality education to 
 The solution will also enable teachers to apply and test their quality experience on their relevant subject matters which distinguish them from others and set them for stakeholders approval while also serving as a sourcing tool for stake holders in need of qualified teachers in the educational sector.
 
 
+
 ## Why
 
 According to the Director-General of the United Nations Educational, Scientific and Cultural Organization (UNESCO), about 13 million children and youths have not been going to school especially in regions like Seria which has been affected by continous outbreak of war.
