@@ -6,27 +6,33 @@ barebones setup for JavaScript / Node projects replace this with a one-liner phr
 
 ## About
 
-What is this project about. Ok to enrich here or the section above it with an image. 
+This application seeks to provide inclusive, equitable and quality education to all people, globally by testing teachers competence in their respective fields. The solution will help subtantially increase the supply of qualified  teachers in communites with little or no availability of quality education.
 
-Once this repo has been setup on Codacy by the TTL, replace the above badge with the actual one from the Codacy dashboard, and add the code coverage badge as well. This is mandatory
+The solution will also enable teachers to apply and test their quality experience on their relevant subject matters which distinguish them from others and set them for stakeholders approval while also serving as a sourcing tool for stake holders in need of qualified teachers in the educational sector.
 
-This is a simple JavaScript starter repo template for setting up your project. The setup contains
 
-- Jest: For runnung tests. We strongly recommend that JavaScript projects use Jest
-
-- Eslint & Prettier: For formatting code to match ESlint AirBnB coding standard. You might need to install the ESlint and Prettier plugins for your code editor to make the most of these utilities
 
 ## Why
 
-Talk about what problem this solves, what SDG(s) and SGD targets it addresses and why these are imoirtant
+According to the Director-General of the United Nations Educational, Scientific and Cultural Organization (UNESCO), about 13 million children and youths have not been going to school especially in regions like Seria which has been affected by continous outbreak of war.
+
+Nothern Nigeria has also been greatly affected by the constant attacks of Boko Haram which has left many displaced.
+
+Since 2015, UNESCO’s regional response has focused on “Bridging Learning Gaps for Youth,” with
+gains made in increasing access to post-basic education, providing psycho-social support and
+skills, and opening up non-formal pathways to learning.
+
+This Solution helps implement this framework by serving as a sourcing tool for organizations like UNESCO to get competent teachers for communities and also serves as a tool for teachers who are willing to test their expertise as well as making themselves available for jobs within their communities.
+
+Solution solves the Problem 4 (Quality Education) of the SDG (Building a solution that will help substantially increase the supply of qualified  teachers in our community)
 
 ## Usage
- How would someone use what you have built, include URLs to the deployed app, service e.t.c when you have it setup
+ How would someone use what you have built, include URLs to the deployed app, service e.t.c when you have it setup.
 
 
 ## Setup
 
-Install `npm` or `yarn` if you dont have any of them already installed. We recommend Yarn though.
+Install `npm` or `yarn` if you dont have any of them already installed. We recommend Yarn though
 
 After clonning the repo to your local machine and moving into the cloned folder, Run `yarn install` to get started by installing dependencies. 
 
@@ -47,7 +53,20 @@ This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bun
 
 ## Authors
 
-List the team behind this project. Their names linked to their Github, LinkedIn, or Twitter accounts should siffice. Ok to signify the role they play in the project, including the TTL and mentor
+Mentor
+-Edewor Onyedika
+TTL
+-[Taiwo Sunday](https://github.com/taiwosunday99)
+FrontEnd Engineers
+--[Dosumu Ayomide](https://github.com/ayor)
+-[Taiwo Sunday](https://github.com/taiwosunday99)
+-[Daniel David](https://github.com/danndav)
+-[David Akpan](https://github.com/thedavyloper)
+Backend Engineers
+-[Ifere Okibe](https://github.com/jioblack)
+-[Shedrack Ajaegbu](https://github.com/Theshedman)
+-[Anjorin Olufemi Benjamin](https://github.com/anje123)
+-[Opeyemi Idowu](https://github.com/ohpeyemi)
 
 ## Contributing
 If this project sounds interesting to you and you'd like to contribute, thank you!
