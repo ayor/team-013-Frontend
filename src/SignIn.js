@@ -14,7 +14,7 @@ class SignIn extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
+  handleChange(event) {
     const { name, value } = event.target;
     this.setState({
       [name]: value

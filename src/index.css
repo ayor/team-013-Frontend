@@ -1,3 +1,5 @@
+/*eslint-disable no-debugger*/
+
 *,
 *::before,
 *::after {
@@ -6,33 +8,32 @@
 
 /* Custom Properties */
 :root {
-  --ff-primary: 'Source Sans Pro', sans-serif;
+  --ff-primary: 'Source Sans Pro', 'sans-serif';
   --ff-secondary: 'Source Code Pro', monospace;
-  
+
   --fw-reg: 300;
   --fw-bold: 900;
-  
+
   --clr-light: #fff;
   --clr-dark: #000000;
   --clr-light-dark: #2c2c2c;
   --clr-light-blue: rgb(40, 194, 241);
   --clr-yellow: rgb(241, 245, 23);
-  
+
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
   --fs-h3: 1.25rem;
   --fs-body: 1rem;
-  
-  --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
-        0.125em 0.125em 0.25em rgba(0,0,0,.15);
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 800px) {
   :root {
-      --fs-h1: 4.5rem;
-      --fs-h2: 3.75rem;
-      --fs-h3: 1.5rem;
-      --fs-body: 1.125rem;
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
   }
 }
 
@@ -54,31 +55,34 @@ body {
 .btn {
   display: inline-block;
   width: 20rem;
-  padding: .5em 2.5em;
+  padding: 0.5em 2.5em;
   background-color: var(--clr-yellow);
   color: var(--clr-dark);
   text-decoration: none;
   cursor: pointer;
-  font-size: .8rem;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   transition: transform 200ms ease-in-out;
 }
-
 
 /* Typography */
 
 h1,
 h2,
 h3 {
-    line-height: 1;
-    margin: 0;
+  line-height: 1;
+  margin: 0;
 }
 
-h1 { font-size: var(--fs-h1) }
-h2 { font-size: var(--fs-h2) }
-h3 { font-size: var(--fs-h3) }
-
-
+h1 {
+  font-size: var(--fs-h1);
+}
+h2 {
+  font-size: var(--fs-h2);
+}
+h3 {
+  font-size: var(--fs-h3);
+}
 
 .main {
   position: relative;
@@ -98,12 +102,11 @@ h3 { font-size: var(--fs-h3) }
   padding-bottom: 4rem;
 }
 
-@media (max-width:1024px) {
- .main {
-   background-size: 100% 100%;
- } 
+@media (max-width: 1024px) {
+  .main {
+    background-size: 100% 100%;
+  }
 }
-
 
 /* header */
 nav {
@@ -114,8 +117,8 @@ nav {
   flex-wrap: wrap;
   position: fixed;
   z-index: 20;
-  padding: .2em;
-  color: var(--clr-light)
+  padding: 0.2em;
+  color: var(--clr-light);
 }
 
 .logo {
@@ -126,10 +129,10 @@ ul {
   list-style-type: none;
 }
 
-.nav-item  {
+.nav-item {
   display: inline-block;
-  padding: .75em;
-} 
+  padding: 0.75em;
+}
 
 .link {
   text-decoration: none;
@@ -166,7 +169,6 @@ ul {
   cursor: pointer;
 }
 
-
 @media (max-width: 768px) {
   nav {
     position: relative;
@@ -178,7 +180,7 @@ ul {
   }
 
   .nav-item {
-    letter-spacing: .5rem;
+    letter-spacing: 0.5rem;
     padding: 1rem;
   }
 
@@ -189,7 +191,7 @@ ul {
     justify-content: space-between;
     width: 100%;
     height: 300px;
-    transition: height .25s ease;
+    transition: height 0.25s ease;
   }
 
   .hamburger {
@@ -200,7 +202,6 @@ ul {
     display: none;
   }
 }
-
 
 /*  Home page  */
 
@@ -223,7 +224,6 @@ ul {
   margin: 2rem auto;
 }
 
-
 .outlineNone {
   outline: none;
 }
@@ -231,7 +231,6 @@ ul {
 .outlineNone:hover {
   text-decoration: none;
 }
-
 
 @media (max-width: 768px) {
   .jumbotron {
@@ -286,7 +285,7 @@ a {
   margin: 0 auto;
 }
 
-input[type=radio] {
+input[type='radio'] {
   margin-left: 1rem;
 }
 
@@ -301,29 +300,35 @@ input[type=radio] {
   padding: 0.5em 0.5em 0.5em 2.2em;
 }
 
-.icon-input { 
+.icon-input {
   position: absolute;
   top: 2px;
   left: 0;
-  padding-left: .2em;
+  padding-left: 0.2em;
   font-size: var(--fs-h3);
   font-weight: var(--fw-bold);
   color: var(--clr-light-dark);
   z-index: 100;
 }
 
-.gender-label, .profile-pic, .course, .grade, .subject {
-  color: var(--clr-light)
+.gender-label,
+.profile-pic,
+.course,
+.grade,
+.subject {
+  color: var(--clr-light);
 }
 
-.course, .grade, .subject {
+.course,
+.grade,
+.subject {
   padding-right: 2rem;
 }
 
 .btnSubmit {
   display: inline-block;
   min-width: 8rem;
-  padding: .5em 1.5em;
+  padding: 0.5em 1.5em;
   background-color: var(--clr-light-dark);
   color: var(--clr-light);
   text-decoration: none;
@@ -331,11 +336,10 @@ input[type=radio] {
   font-size: 1.3rem;
   letter-spacing: 2px;
   transition: transform 200ms ease-in-out;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   margin-bottom: 2rem;
   outline: none;
 }
-
 
 /* Dashboard */
 
