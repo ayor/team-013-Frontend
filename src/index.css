@@ -314,14 +314,13 @@ input[type='radio'] {
 .gender-label,
 .profile-pic,
 .course,
-.grade,
-.subject {
+.gpa
+ {
   color: var(--clr-light);
 }
 
 .course,
-.grade,
-.subject {
+.gpa{
   padding-right: 2rem;
 }
 

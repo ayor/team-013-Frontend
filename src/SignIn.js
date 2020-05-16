@@ -7,7 +7,7 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      loginKey: '',
       password: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +23,17 @@ class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.history.push('/dashboard');
+    const url = 'Endpoints: https://teachers-placement-backend.herokuapp.com/api/login';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then((response) => response.json())
+      .then((result) => console.warn('Result', result))
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -33,7 +43,7 @@ class SignIn extends Component {
         <h3 className="form-header text-center">Welcome, Sign In</h3>
         <form className="form text-center" onSubmit={this.handleSubmit}>
           <div className="form-group input-icon">
-            <input className="form-control input-signin" type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email"/>
+            <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone"/>
             <div className="icon-input"><i class="fas fa-user" aria-hidden="true"></i></div>
           </div> <br />
           <div className="form-group input-icon">

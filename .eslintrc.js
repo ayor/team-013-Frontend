@@ -24,6 +24,8 @@ module.exports = {
     "linebreak-style": 0,
     "global-require": 0,
     "eslint linebreak-style": [0, "error", "windows"],
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "class-methods-use-this": "off"
   }
 };
