@@ -114,7 +114,7 @@ class SignUp extends Component {
               </div>
               <div className="form-group">
                 <span className="text-danger">*</span>
-                <input className="form-control" type="text" name="state" value={this.state.state} placeholder="State" onChange={this.handleChange} required />
+                <input className="form-control" type="text" name="state" value={this.state.state} placeholder="State" onChange={this.handleChange} />
               </div>
               <div className="form-group">
                 <input className="form-control" type="text" name="country" value={this.state.country} placeholder="Country" onChange={this.handleChange} />
