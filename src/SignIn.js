@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from './Navbar';
 import Footer from './Footer';
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -23,17 +24,20 @@ class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const url = 'Endpoints: https://teachers-placement-backend.herokuapp.com/api/login';
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    })
-      .then((response) => response.json())
-      .then((result) => console.warn('Result', result))
-      .catch((err) => console.log(err));
+    const user = this.state;
+    const url = 'https://teachers-placement-backend.herokuapp.com/api/login';
+    axios
+      .post(url, user)
+      .then((res) => {
+        console.log(res.data);
+        const { token } = res.data.data;
+        console.log(token);
+        localStorage.setItem('token', token);
+        this.setState();
+        const getToken = localStorage.getItem('token');
+        (getToken && getToken.length !== '') ? this.props.history.push('/dashboard') : this.props.history.push('/signin');
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {
@@ -47,7 +51,7 @@ class SignIn extends Component {
             <div className="icon-input"><i class="fas fa-user" aria-hidden="true"></i></div>
           </div> <br />
           <div className="form-group input-icon">
-            <input className="form-control input-signin" type="text" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+            <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
             <div className="icon-input"><i class="fas fa-key" aria-hidden="true"></i></div>
           </div> <br />
           <button type="submit" className="btnSubmit">Sign In</button>
