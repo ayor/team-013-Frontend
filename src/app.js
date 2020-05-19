@@ -7,6 +7,7 @@ import Home from './Home';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Dashboard from './Dashboard';
+import Test from './Application'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/test" component={Test} />
           <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </div>

@@ -7,7 +7,7 @@ function Dashboard() {
   return (
     <main className="dashboard">
       <div className="wrap">
-        <Navbar signout='Log Out'/> <br/>
+        <Navbar signout='Log Out' dashboard="Dashboard" takeTest="Apply"/> <br/>
         <h4 className="text-center" style={{ marginTop: '4.5rem' }}>Welcome Dada!</h4>
         <div className="flex-wrap">
           <div className="flex-item">

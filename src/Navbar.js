@@ -12,8 +12,10 @@ const Navbar = (props) => (
       <ul className="nav-list">
         <li className="nav-item"><NavLink className="link" to="/">{props.home}</NavLink></li>
         <li className="nav-item"><NavLink className="link" to="/Signup">{props.signup}</NavLink></li>
+        <li className="nav-item"><NavLink className="link" to="/dashboard"><i className="fas fa-user"></i> {props.dashboard}</NavLink></li>
+        <li className="nav-item"><NavLink className="link" to="/test"><i class="fas fa-chalkboard-teacher"></i> {props.takeTest}</NavLink></li>
         <li className="nav-item"><NavLink className="link" to="/signin">{props.signin}</NavLink></li>
-        <li className="nav-item"><NavLink className="link" to="/">{props.signout}</NavLink></li>
+        <li className="nav-item"><NavLink className="link" to="/"><i class="fas fa-sign-out-alt"></i> {props.signout}</NavLink></li>
       </ul>
     </nav>
 );
