@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../layout/Navbar';
+import Footer from '../footer/Footer';
 
 
 class SignIn extends Component {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from './image/logo.jpg';
-import Hamburger from './Hamburger';
-import Close from './Close';
+import logo from '../../image/felt-teachers-logo.png';
+import Hamburger from '../../Hamburger';
+import Close from '../../Close';
 
 const Navbar = (props) => (
     <nav>
