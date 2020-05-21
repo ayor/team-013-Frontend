@@ -7,16 +7,48 @@ function Dashboard() {
   return (
     <main className="dashboard">
       <div className="wrap">
-        <Navbar signout='Log Out'/> <br/>
-        <h4 className="text-center" style={{ marginTop: '4.5rem' }}>Welcome Dada!</h4>
+        <Navbar signout='Log Out' userName="Hi Ayomide" takeTest="Apply" /> <br />
+
         <div className="flex-wrap">
           <div className="flex-item">
-            <div className="profile-item"><img src={profilePic} alt="profile picture" /></div> <br/>
-            <div className="profile-item">
-              <p>Kay Dada</p>
-              <p>kay@gmail.com</p>
-              <p>Mathematics teacher</p>
+            <div className="profile-info">
+              <div className="profile-info-item"><div className="profile-item"><img src={profilePic} alt="profile picture" /></div> </div>
+              <div className="profile-info-item" style={{ width: "70%", textAlign: "right" }}>
+                <div className="profile-item" >
+                  <div >
+                    <h1>Kay Dada</h1>
+                  </div>
+                  <hr />
+                  <div className="user-rating-info" style={{ margin: "1em 0", display: "flex", justifyContent:"space-between",  textAlign:"center" }}>
+                    <div>
+                      <h6 >EMAIL</h6>
+                      <p>kay@gmail.com</p>
+                    </div>
+                    <div>
+                      <h6>ROLE</h6>
+                      <p>Mathematics teacher</p>
+                    </div>
+                    
+                    <div>
+                      <h6>STATUS</h6>
+                      <p style={{ color: '#228B22' }}>Passed</p>
+                    </div>
+                    <div>
+                      <h6>RATING</h6>
+                      <div style={{ display: "flex", color: '#DAA520' }}>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                      </div>
+                   
+                  </div>
             </div>
+
+          </div>
+          </div>
+          </div>
           </div>
           <div className="flex-item">
             <div className="flex-data">
