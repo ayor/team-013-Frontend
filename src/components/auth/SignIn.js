@@ -29,13 +29,12 @@ class SignIn extends Component {
     axios
       .post(url, user)
       .then((res) => {
-        console.log(res.data);
+        //  console.log(res.data);
         const { token } = res.data.data;
-        console.log(token);
         localStorage.setItem('token', token);
-        this.setState();
+        // this.setState();
         const getToken = localStorage.getItem('token');
-        (getToken && getToken.length !== '') ? this.props.history.push('/dashboard') : this.props.history.push('/signin');
+        (getToken && getToken.length !== 0) ? this.props.history.push('/dashboard') : this.props.history.push('/signin');
       })
       .catch((error) => console.log(error));
   }
