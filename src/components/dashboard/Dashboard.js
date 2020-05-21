@@ -45,20 +45,18 @@ class Dashboard extends Component {
         {
           getData.map((data) => (
           <main className="dashboard">
-            <div className="wrap">
-              <Navbar signout="Log Out" /> <br />
-              <h4 className="text-center" style={{ marginTop: '4.5rem' }}>
-                Welcome Dada!
+            <Navbar signout="Log Out" /> <br />
+              <h4 className="text-center" style={{ marginTop: '4.5rem', color: 'var(--clr-light)' }}>
+                Welcome {data.firstName}!
               </h4>
-              <div className="flex-wrap">
-                <div className="flex-item">
+              <div className="space-before-footer">
+                <div className="main-wrap">
                   <div className="profile-pic">
                     <img src={profilePic} alt="profile picture" />
                   </div>
-                  <br />
-                  <div className="fetched-data">
+                  <div className="wrap-flex">
                     <div className="data-item">
-                      <ul>
+                      <ul className="right">
                         <li>First Name</li>
                         <li>Last Name</li>
                         <li>Username</li>
@@ -86,11 +84,9 @@ class Dashboard extends Component {
                       </ul>
                     </div>
                   </div>
-                </div>
-                <div className="flex-item">
-                  <div className="flex-data">
-                    <div className="flex-data-item">
-                      <ul>
+                  <div className="wrap-flex">
+                    <div className="data-item">
+                      <ul className="right">
                         <li>Institution Attended</li>
                         <li>Level Of Education</li>
                         <li>Department</li>
@@ -98,23 +94,22 @@ class Dashboard extends Component {
                         <li>Years Of Experience</li>
                       </ul>
                     </div>
-                    <div className="flex-data-item">
+                    <div className="data-item">
                       <ul>
                         <li>{data.school}</li>
                         <li>{data.levelOfEducation}</li>
                         <li>{data.courseOfStudy}</li>
                         <li>{data.gpa}</li>
-                        <li>{data.experience}</li>
+                        <li>{data.yearOfExperience}</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <Footer />
+              <Footer />
           </main>
           ))
-  }
+        }
       </div>
     );
   }
