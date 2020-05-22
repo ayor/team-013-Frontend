@@ -1,58 +1,118 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Navbar from '../layout/Navbar';
 import profilePic from '../../image/profilePic.jpg';
 import Footer from '../footer/Footer';
 
-function Dashboard() {
-  return (
-    <main className="dashboard">
-      <div className="wrap">
-        <Navbar signout='Log Out'/> <br/>
-        <h4 className="text-center" style={{ marginTop: '4.5rem' }}>Welcome Dada!</h4>
-        <div className="flex-wrap">
-          <div className="flex-item">
-            <div className="profile-item"><img src={profilePic} alt="profile picture" /></div> <br/>
-            <div className="profile-item">
-              <p>Kay Dada</p>
-              <p>kay@gmail.com</p>
-              <p>Mathematics teacher</p>
-            </div>
-          </div>
-          <div className="flex-item">
-            <div className="flex-data">
-              <div className="flex-data-item">
-                <ul>
-                  <li>Result Status</li>
-                  <li>Grade</li>
-                  <li>Specialty</li>
-                  <li>Experience</li>
-                  <li>Rating</li>
-                  <li>Level of Education</li>
-                </ul>
+const token = localStorage.getItem('token');
+
+const authAxios = axios.create({
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
+
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      teacherData: ''
+    };
+  }
+
+  componentDidMount() {
+    const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers/me';
+    if (token.length !== 0) {
+      authAxios
+        .get(url)
+        .then((res) => {
+          const teacherData = res.data.data;
+          console.log(teacherData);
+          this.setState({ teacherData });
+        })
+        .catch((error) => console.log(error));
+    } else {
+      this.props.history.push('/');
+    }
+  }
+
+  render() {
+    const getData = [this.state.teacherData];
+    console.log(getData);
+
+    return (
+      <div>
+        {
+          getData.map((data) => (
+          <main className="dashboard">
+            <Navbar signout="Log Out" /> <br />
+              <h4 className="text-center" style={{ marginTop: '4.5rem', color: 'var(--clr-light)' }}>
+                Welcome {data.firstName}!
+              </h4>
+              <div className="space-before-footer">
+                <div className="main-wrap">
+                  <div className="profile-pic">
+                    <img src={profilePic} alt="profile picture" />
+                  </div>
+                  <div className="wrap-flex">
+                    <div className="data-item">
+                      <ul className="right">
+                        <li>First Name</li>
+                        <li>Last Name</li>
+                        <li>Username</li>
+                        <li>Date of birth</li>
+                        <li>Gender</li>
+                        <li>Telephone</li>
+                        <li>Email</li>
+                        <li>Address</li>
+                        <li>State</li>
+                        <li>Country</li>
+                      </ul>
+                    </div>
+                    <div className="data-item">
+                      <ul>
+                        <li>{data.firstName}</li>
+                        <li>{data.lastName} </li>
+                        <li>{data.username}</li>
+                        <li>{data.dateOfBirth}</li>
+                        <li>{data.gender}</li>
+                        <li>{data.phone}</li>
+                        <li>{data.email}</li>
+                        <li>{data.address}</li>
+                        <li>{data.state}</li>
+                        <li>{data.country}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="wrap-flex">
+                    <div className="data-item">
+                      <ul className="right">
+                        <li>Institution Attended</li>
+                        <li>Level Of Education</li>
+                        <li>Department</li>
+                        <li>GPA</li>
+                        <li>Years Of Experience</li>
+                      </ul>
+                    </div>
+                    <div className="data-item">
+                      <ul>
+                        <li>{data.school}</li>
+                        <li>{data.levelOfEducation}</li>
+                        <li>{data.courseOfStudy}</li>
+                        <li>{data.gpa}</li>
+                        <li>{data.yearOfExperience}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex-data-item">
-                <ul>
-                  <li style={{ color: '#228B22' }}>Passed</li>
-                  <li>A</li>
-                  <li>Science</li>
-                  <li>3 Years</li>
-                  <li style={{ color: '#DAA520' }}>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </li>
-                  <li>Graduate</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+              <Footer />
+          </main>
+          ))
+        }
       </div>
-      <Footer />
-    </main>
-  );
+    );
+  }
 }
 
 export default Dashboard;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../image/sdglogo.png';
+import logo from '../../image/felt-teachers-logo.png';
 import Hamburger from '../../Hamburger';
 import Close from '../../Close';
 

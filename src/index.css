@@ -18,11 +18,12 @@
   --clr-dark: #000000;
   --clr-light-dark: #2c2c2c;
   --clr-light-blue: rgb(40, 194, 241);
-  --clr-yellow: rgb(241, 245, 23);
+  --clr-yellow: rgb(223, 209, 15);
 
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
   --fs-h3: 1.25rem;
+  --fs-h4: 1.15rem;
   --fs-body: 1rem;
 
   --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
@@ -314,14 +315,13 @@ input[type='radio'] {
 .gender-label,
 .profile-pic,
 .course,
-.grade,
-.subject {
+.gpa
+ {
   color: var(--clr-light);
 }
 
 .course,
-.grade,
-.subject {
+.gpa{
   padding-right: 2rem;
 }
 
@@ -350,34 +350,41 @@ input[type='radio'] {
   background-color: var(--clr-light-blue);
 }
 
-.profile-item img {
+.profile-pic img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
 
-.flex-wrap {
+.space-before-footer {
+  padding-bottom: 7rem;
+}
+
+.main-wrap {
   width: 70%;
+  padding: 2rem;
   margin: 0 auto;
+  background-color: var(--clr-yellow);
+  color: var(--clr-light-dark);
+}
+
+.wrap-flex {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.data-item {
+  width: 500px;
+  height: 350px;
   padding: 2rem;
+  font-size: var(--fs-h4);
 }
 
-.flex-wrap .flex-item {
-  border: none;
+.right {
+  float: right;
+  margin-right: 8rem;
 }
 
-.flex-item {
-  padding: 2rem;
-  background-color: var(--clr-yellow);
-}
-
-.flex-data {
-  display: flex;
-}
-
-.flex-data-item {
-  padding: 2em;
-}
