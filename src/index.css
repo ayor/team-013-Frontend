@@ -88,8 +88,6 @@ h3 {
   position: relative;
   width: 100%;
   min-height: 100vh;
-
-  
 }
 
 /* removed from the main class background: url('./image/bg-img.jpg');
@@ -376,8 +374,9 @@ input[type='radio'] {
 
 .flex-item {
   padding: 2rem;
-  /* background-color: #b2b2b2; */
 }
+
+  /* background-color: #b2b2b2;*/
 
 .flex-data {
   display: flex;
@@ -388,23 +387,21 @@ input[type='radio'] {
 }
 
 /* styling active links */
-nav .nav-list .nav-item .link.active{
-    color: #ffd700;
-    opacity: 0.8
+nav .nav-list .nav-item .link.active {
+  color: #ffd700;
+  opacity: 0.8;
 }
 
 /* styling the profile picture and info */
-.profile-info{
+.profile-info {
   display: flex;
   justify-content: space-between;
 }
-.profile-info-item{
-  margin: 0 2em;
-}
-.profile-info-item{
+
+.profile-info-item {
   margin: 0 2em 0 0;
 }
-.profile-info h6{
+.profile-info h6 {
   color: #ffd700;
   font-weight: bolder;
 }
