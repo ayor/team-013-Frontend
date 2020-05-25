@@ -53,7 +53,7 @@ class SignUp extends Component {
     return (
       <main className="main main-bg">
         <div className="wrap">
-            <Navbar home='Home' signin='Sign In'/> <br />
+            <Navbar home='Home' signin='Sign In'/> <br /><br />
             <h3 className="form-header text-center">Create Your Account</h3>
             <form className="form text-center" onSubmit={this.handleSubmit}>
               <div className="form-group">

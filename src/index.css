@@ -88,14 +88,17 @@ h3 {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url('./image/bg-img.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-repeat: no-repeat;
+
+  
 }
 
+/* removed from the main class background: url('./image/bg-img.jpg');
+background-size: cover;
+  background-blend-mode: multiply;
+  background-repeat: no-repeat; */
+
 .main-bg {
-  background-color: var(--clr-light-dark);
+  background-color: var(--clr-light);
 }
 
 .wrap {
@@ -119,7 +122,8 @@ nav {
   z-index: 20;
   padding: 0.2em;
   color: var(--clr-light);
-  background-color: var(--clr-dark);
+ background-color: var(--clr-dark);
+  margin-bottom: 2em;
 }
 
 

@@ -3,11 +3,18 @@ import Navbar from '../layout/Navbar';
 import profilePic from '../../image/profilePic.jpg';
 import Footer from '../footer/Footer';
 
+
+
 function Dashboard() {
+
+
   return (
     <main className="dashboard">
       <div className="wrap">
-        <Navbar signout='Log Out' userName="Hi Ayomide" takeTest="Apply" /> <br />
+       
+       <Navbar signout='Log Out' userName="Hi Ayomide" takeTest="Apply" />
+     
+        <br /><br />
 
         <div className="flex-wrap">
           <div className="flex-item">
@@ -19,7 +26,7 @@ function Dashboard() {
                     <h1>Kay Dada</h1>
                   </div>
                   <hr />
-                  <div className="user-rating-info" style={{ margin: "1em 0", display: "flex", justifyContent:"space-between",  textAlign:"center" }}>
+                  <div className="user-rating-info" style={{ margin: "1em 0", display: "flex", justifyContent: "space-between", textAlign: "center" }}>
                     <div>
                       <h6 >EMAIL</h6>
                       <p>kay@gmail.com</p>
@@ -28,7 +35,7 @@ function Dashboard() {
                       <h6>ROLE</h6>
                       <p>Mathematics teacher</p>
                     </div>
-                    
+
                     <div>
                       <h6>STATUS</h6>
                       <p style={{ color: '#228B22' }}>Passed</p>
@@ -36,19 +43,19 @@ function Dashboard() {
                     <div>
                       <h6>RATING</h6>
                       <div style={{ display: "flex", color: '#DAA520' }}>
-                        <i class="fas fa-star" aria-hidden="true"></i>
-                        <i class="fas fa-star" aria-hidden="true"></i>
-                        <i class="fas fa-star" aria-hidden="true"></i>
-                        <i class="fas fa-star" aria-hidden="true"></i>
-                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i className="fas fa-star" aria-hidden="true"></i>
+                        <i className="fas fa-star" aria-hidden="true"></i>
+                        <i className="fas fa-star" aria-hidden="true"></i>
+                        <i className="fas fa-star" aria-hidden="true"></i>
+                        <i className="fas fa-star" aria-hidden="true"></i>
                       </div>
-                   
-                  </div>
-            </div>
 
-          </div>
-          </div>
-          </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
           <div className="flex-item">
             <div className="flex-data">
@@ -69,11 +76,11 @@ function Dashboard() {
                   <li>Science</li>
                   <li>3 Years</li>
                   <li style={{ color: '#DAA520' }}>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i className="fas fa-star" aria-hidden="true"></i>
+                    <i className="fas fa-star" aria-hidden="true"></i>
+                    <i className="fas fa-star" aria-hidden="true"></i>
+                    <i className="fas fa-star" aria-hidden="true"></i>
+                    <i className="fas fa-star" aria-hidden="true"></i>
                   </li>
                   <li>Graduate</li>
                 </ul>

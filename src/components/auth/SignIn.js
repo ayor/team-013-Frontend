@@ -29,7 +29,7 @@ class SignIn extends Component {
   render() {
     return (
       <main className="main main-bg">
-        <Navbar home='Home' signup='Sign Up' /> <br />
+        <Navbar home='Home' signup='Sign Up' /> <br /><br />
         <h3 className="form-header text-center">Welcome, Sign In</h3>
         <form className="form text-center" onSubmit={this.handleSubmit}>
           <div className="form-group input-icon">
