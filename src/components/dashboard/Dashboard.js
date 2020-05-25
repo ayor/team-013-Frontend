@@ -3,8 +3,6 @@ import Navbar from '../layout/Navbar';
 import profilePic from '../../image/profilePic.jpg';
 import Footer from '../footer/Footer';
 
-
-
 function Dashboard() {
   return (
     <main className='dashboard'>
@@ -29,7 +27,15 @@ function Dashboard() {
                     <h1>Kay Dada</h1>
                   </div>
                   <hr />
-                  <div className='user-rating-info' style={{ margin: '1em 0', display: 'flex', justifyContent: 'space-between', textAlign: 'center' }}>
+                  <div className='user-rating-info'
+                    style={
+                      {
+                        margin: '1em 0',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        textAlign: 'center'
+                      }
+                    }>
                     <div>
                       <h6 >EMAIL</h6>
                       <p>kay@gmail.com</p>
