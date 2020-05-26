@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../src/App';
-import Navbar from '../src/Navbar';
-import Home from '../src/Home';
-import SignUp from '../src/SignUp';
-import SignIn from '../src/SignIn';
-import Dashboard from '../src/Dashboard';
+import App from '../src/app';
+import Navbar from '../src/components/layout/Navbar';
+import Home from '../src/components/homepage/Home';
+import SignUp from '../src/components/auth/SignUp';
+import SignIn from '../src/components/auth/SignIn';
+import Dashboard from '../src/components/dashboard/Dashboard';
 
 describe('Test Components Renders Suite', () => {
   test('App renders without crashing', () => {
