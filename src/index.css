@@ -88,14 +88,15 @@ h3 {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: url('./image/bg-img.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-repeat: no-repeat;
 }
 
+/* removed from the main class background: url('./image/bg-img.jpg');
+background-size: cover;
+  background-blend-mode: multiply;
+  background-repeat: no-repeat; */
+
 .main-bg {
-  background-color: var(--clr-light-dark);
+  background-color: var(--clr-light);
 }
 
 .wrap {
@@ -120,9 +121,8 @@ nav {
   padding: 0.2em;
   color: var(--clr-light);
   background-color: var(--clr-dark);
+  margin-bottom: 2em;
 }
-
-
 
 .logo {
   max-width: 100px;
@@ -372,8 +372,9 @@ input[type='radio'] {
 
 .flex-item {
   padding: 2rem;
-  /* background-color: #b2b2b2; */
 }
+
+/* background-color: #b2b2b2; */
 
 .flex-data {
   display: flex;
@@ -385,8 +386,8 @@ input[type='radio'] {
 
 /* styling active links */
 nav .nav-list .nav-item .link.active {
-    color: #ffd700;
-    opacity: 0.8
+  color: #ffd700;
+  opacity: 0.8;
 }
 
 /* styling the profile picture and info */
@@ -394,12 +395,11 @@ nav .nav-list .nav-item .link.active {
   display: flex;
   justify-content: space-between;
 }
-.profile-info-item {
-  margin: 0 2em;
-}
+
 .profile-info-item {
   margin: 0 2em 0 0;
 }
+
 .profile-info h6 {
   color: #ffd700;
   font-weight: bolder;
@@ -410,6 +410,6 @@ nav .nav-list .nav-item .link.active {
   width: 100%;
   height: 30%;
   border: 1px solid #ccc;
-  margin-bottom: 2em ;
+  margin-bottom: 2em;
   box-shadow: 1px 4px 4px #ccc;
 }
