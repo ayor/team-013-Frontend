@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      loginKey: '',
       password: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +24,19 @@ class SignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.history.push('/dashboard');
+    const user = this.state;
+    const url = 'https://teachers-placement-backend.herokuapp.com/api/login';
+    axios
+      .post(url, user)
+      .then((res) => {
+        //  console.log(res.data);
+        const { token } = res.data.data;
+        localStorage.setItem('token', token);
+        // this.setState();
+        const getToken = localStorage.getItem('token');
+        (getToken && getToken.length !== 0) ? this.props.history.push('/dashboard') : this.props.history.push('/signin');
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {
@@ -33,11 +46,11 @@ class SignIn extends Component {
         <h3 className="form-header text-center">Welcome, Sign In</h3>
         <form className="form text-center" onSubmit={this.handleSubmit}>
           <div className="form-group input-icon">
-            <input className="form-control input-signin" type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email"/>
+            <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone"/>
             <div className="icon-input"><i class="fas fa-user" aria-hidden="true"></i></div>
           </div> <br />
           <div className="form-group input-icon">
-            <input className="form-control input-signin" type="text" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+            <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
             <div className="icon-input"><i class="fas fa-key" aria-hidden="true"></i></div>
           </div> <br />
           <button type="submit" className="btnSubmit">Sign In</button>

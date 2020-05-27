@@ -12,7 +12,10 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    } 
   },
   plugins: [
     "react"
@@ -20,10 +23,14 @@ module.exports = {
   "parser": "babel-eslint",
   rules: {
     'comma-dangle': ['error', 'never'],
-    'no-param-reassign': ['error', { props: true }],
+    'no-param-reassign': ['error', { props: false }],
     "linebreak-style": 0,
     "global-require": 0,
     "eslint linebreak-style": [0, "error", "windows"],
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "class-methods-use-this": "off",
+    "no-unused-expressions": "off",
+    "func-names": "off"
   }
 };
