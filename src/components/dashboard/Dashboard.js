@@ -17,42 +17,24 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      teacherData: {
-        userid:'#wf74f',
-        firstName: 'Ayomide',
-        lastName: 'Dosumu',
-        username: 'ayor',
-        dateOfBirth: '02/04/2000',
-        gender: 'Male',
-        phone: '+234 548 965 236',
-        email: 'ayor@andela.com',
-        address: 'lekki',
-        state: 'lagos',
-        country: 'Nigeria',
-        school: 'Unilag',
-        levelOfEducation: 'Msc',
-        courseOfStudy: 'Computer Science',
-        gpa: 5.01,
-        yearOfExperience: 4,
-      }
+      teacherData: ''
     };
   }
 
   componentDidMount() {
-
-    // const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers/me';
-    // if (token.length !== 0) {
-    //   authAxios
-    //     .get(url)
-    //     .then((res) => {
-    //       const teacherData = res.data.data;
-    //       console.log(teacherData);
-    //       this.setState({ teacherData });
-    //     })
-    //     .catch((error) => console.log(error));
-    // } else {
-    //   this.props.history.push('/');
-    // }
+    const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers/me';
+    if (token.length !== 0) {
+      authAxios
+        .get(url)
+        .then((res) => {
+          const teacherData = res.data.data;
+          console.log(teacherData);
+          this.setState({ teacherData });
+        })
+        .catch((error) => console.log(error));
+    } else {
+      this.props.history.push('/');
+    }
   }
 
   render() {
@@ -64,7 +46,7 @@ class Dashboard extends Component {
         {
           getData.map((data) => (
             <main className="dashboard" key={data.userid}>
-              <Navbar signout="Log Out" userName={data.firstName} /> <br /><br /><br /><br />
+              <Navbar signout="Log Out" userName={data.firstName} takeTest="Apply"/> <br /><br /><br /><br />
               {/* <h4 className="text-center" style={{ marginTop: '4.5rem', color: 'var(--clr-light)' }}>
                 Welcome {data.firstName}!
               </h4> */}
