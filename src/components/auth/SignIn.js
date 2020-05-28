@@ -51,7 +51,7 @@ class SignIn extends Component {
           </div> <br />
           <div className="form-group input-icon">
             <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
-            <div className="icon-input"><i class="fas fa-key" aria-hidden="true"></i></div>
+            <div className="icon-input"><i className="fas fa-key" aria-hidden="true"></i></div>
           </div> <br />
           <button type="submit" className="btnSubmit">Sign In</button>
         </form>

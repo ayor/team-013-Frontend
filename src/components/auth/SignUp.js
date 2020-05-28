@@ -1,3 +1,5 @@
+/* eslint-disable no-debugger */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../layout/Navbar';
@@ -62,11 +64,35 @@ class SignUp extends Component {
   render() {
     return (
       <main className="main main-bg">
-        <div>
-          <form>
-            <div className="wrap">
-              type="text"
-              name="username"
+        <div className="wrap">
+          <Navbar home="Home" signin="Sign In" /> <br />
+          <h3 className="form-header text-center">Create Your Account</h3>
+          <form className="form text-center" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                name="firstName"
+                value={this.state.firstName}
+                placeholder="First Name"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                name="lastName"
+                value={this.state.lastName}
+                placeholder="Last Name"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                name="username"
                 value={this.state.username}
                 placeholder="Username"
                 onChange={this.handleChange}

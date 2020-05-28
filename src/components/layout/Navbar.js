@@ -16,7 +16,7 @@ const Navbar = (props) => (
       <li className="nav-item"><NavLink className="link" to="/test">{props.takeTest ? <Icon classType="fas fa-chalkboard-teacher" /> : null} {props.takeTest}</NavLink></li>
       <li className="nav-item"><NavLink className="link" to="/signin">{props.signin ? <Icon classType="fas fa-sign-in-alt" /> : null} {props.signin}</NavLink></li>
       <li className="nav-item"><NavLink className="link" to="/" exact onClick={() => localStorage.removeItem('token')}>{props.signout ? <Icon classType="fas fa-sign-out-alt" /> : null} {props.signout}</NavLink></li>
-      <li className="nav-item"><NavLink className="link" to="/dashboard" >{props.userName ? <Icon classType="fas fa-user"/> : null} Hi, {props.userName}</NavLink></li>
+      <li className="nav-item"><NavLink className="link" to="/dashboard" >{props.userName ? <Icon classType="fas fa-user"/> : null}  { props.userName}</NavLink></li>
       </ul>
     </nav>
 );
