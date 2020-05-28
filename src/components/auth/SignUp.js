@@ -23,7 +23,7 @@ class SignUp extends Component {
       state: '',
       country: '',
       gpa: '',
-      selectedFile: '',
+      image: '',
       gender: '',
       dateOfBirth: ''
     };
@@ -41,7 +41,7 @@ class SignUp extends Component {
 
   fileHandle(event) {
     this.setState({
-      selectedFile: event.target.files[0]
+      image: event.target.files[0]
     });
   }
 
@@ -50,8 +50,7 @@ class SignUp extends Component {
     const user = this.state;
 
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
-    axios
-      .post(url, user)
+    axios.post(url, user)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -217,7 +216,7 @@ class SignUp extends Component {
             </div>
 
             <div className="form-group profile-pic">
-              <input type="file" onChange={this.fileHandle} />
+              <input type="file" name="image" onChange={this.fileHandle} />
             </div>
 
             <div className="form-group">
