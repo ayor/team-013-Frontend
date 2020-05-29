@@ -40,16 +40,22 @@ class SignUp extends Component {
   }
 
   fileHandle(event) {
-    this.setState({
-      selectedFile: event.target.files[0]
-    });
+    const inputFile = event.target.file[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(inputFile);
+    reader.onloadend = (e) => {
+      this.setState({
+        image: e.target.result
+      });
+    }
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const user = this.state;
 
-    const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
+    // const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
+    const url = 'http://localhost:4444/api/teachers';
     axios
       .post(url, user)
       .then((res) => {
