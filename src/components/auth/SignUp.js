@@ -23,7 +23,7 @@ class SignUp extends Component {
       state: '',
       country: '',
       gpa: '',
-      selectedFile: '',
+      image: null,
       gender: '',
       dateOfBirth: ''
     };
@@ -35,23 +35,38 @@ class SignUp extends Component {
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      image: this.state.image
     });
+    
   }
+  
+  
 
   fileHandle(event) {
-    this.setState({
-      selectedFile: event.target.files[0]
-    });
+    event.preventDefault();
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.setState({
+        image: file
+      });
+    };
+    reader.readAsDataURL(file);
+
   }
 
-  handleSubmit(event) {
+ async handleSubmit(event) {
     event.preventDefault();
     const user = this.state;
-
+    console.log('user: ', user);
+    const data = Object.entries(user);
+    const formData = new FormData();
+    data.forEach((item, index, array) => {
+      formData.append(item[0], item[1]);
+    });
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
-    axios
-      .post(url, user)
+    await axios.post(url, formData)
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -67,7 +82,7 @@ class SignUp extends Component {
         <div className="wrap">
           <Navbar home="Home" signin="Sign In" /> <br />
           <h3 className="form-header text-center">Create Your Account</h3>
-          <form className="form text-center" onSubmit={this.handleSubmit}>
+          <form className="form text-center" encType="multiparty/form-data" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
                 className="form-control"
