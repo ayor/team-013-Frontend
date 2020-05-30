@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
 
+
 const token = localStorage.getItem('token');
 
 const authAxios = axios.create({
@@ -107,8 +108,9 @@ class Dashboard extends Component {
             <Footer />
           </main>
         ))}
+
       </div>
-    );
+    )
   }
 }
 
