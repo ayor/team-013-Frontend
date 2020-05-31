@@ -59,7 +59,6 @@ class SignUp extends Component {
  async handleSubmit(event) {
     event.preventDefault();
     const user = this.state;
-    console.log('user: ', user);
     const data = Object.entries(user);
     const formData = new FormData();
     data.forEach((item, index, array) => {
@@ -68,10 +67,7 @@ class SignUp extends Component {
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
     await axios.post(url, formData)
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
         this.props.history.push('/signin');
-        console.log(res.data.message);
       })
       .catch((error) => console.log(error));
   }
