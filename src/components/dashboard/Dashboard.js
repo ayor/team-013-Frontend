@@ -41,45 +41,66 @@ class Dashboard extends Component {
 
     return (
       <div>
-        {getData.map((data) => (
-          <main className="dashboard">
-            <Navbar signout="Log Out" /> <br />
-            <h4 className="text-center" style={{ marginTop: '4.5rem', color: 'var(--clr-light)' }}>
-              Welcome {data.firstName}!
-            </h4>
-            <div className="space-before-footer">
-              <div className="main-wrap">
-                <div className="profile-pic">
-                  <img src={`https://teachers-placement-backend.herokuapp.com/${data.image}`} alt="profile picture" />
-                </div>
-                <div className="wrap-flex">
-                  <div className="data-item">
-                    <ul className="right">
-                      <li>First Name</li>
-                      <li>Last Name</li>
-                      <li>Username</li>
-                      <li>Date of birth</li>
-                      <li>Gender</li>
-                      <li>Telephone</li>
-                      <li>Email</li>
-                      <li>Address</li>
-                      <li>State</li>
-                      <li>Country</li>
-                    </ul>
-                  </div>
-                  <div className="data-item">
-                    <ul>
-                      <li>{data.firstName}</li>
-                      <li>{data.lastName} </li>
-                      <li>{data.username}</li>
-                      <li>{data.dateOfBirth}</li>
-                      <li>{data.gender}</li>
-                      <li>{data.phone}</li>
-                      <li>{data.email}</li>
-                      <li>{data.address}</li>
-                      <li>{data.state}</li>
-                      <li>{data.country}</li>
-                    </ul>
+        {
+          getData.map((data) => (
+            <main className="dashboard" key={data._id}>
+              <Navbar signout="Log Out" userName={data.firstName} takeTest="Take a Test"/> <br /><br /><br /><br />             
+              <div className='flex-wrap'>
+                <div className='flex-item'>
+                  <div className='profile-info'>
+                    <div className='profile-info-item'>
+                      <div className='profile-item' style={{
+                        borderRadius: '50%',
+                        overflow: 'hidden'
+                      }}><img src={profilePic} alt='profile picture' /></div> </div>
+                    <div className='profile-info-item' style={
+                      {
+                        width: '70%',
+                        textAlign: 'right'
+                      }
+                    }>
+                      <div className='profile-item' >
+                        <div >
+                          <h1>{data.firstName + ' ' + data.lastName}</h1>
+                        </div>
+                        <hr />
+                        <div className='user-rating-info'
+                          style={
+                            {
+                              margin: '1em 0',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              textAlign: 'center'
+                            }
+                          }>
+                          <div>
+                            <h6 >EMAIL</h6>
+                            <p>{data.email}</p>
+                          </div>
+                          <div>
+                            <h6>ROLE</h6>
+                            <p>{data.role}</p>
+                          </div>
+
+                          <div>
+                            <h6>STATUS</h6>
+                            <p style={{ color: '#228B22' }}>Passed</p>
+                          </div>
+                          <div>
+                            <h6>RATING</h6>
+                            <div style={{ display: 'flex', color: '#DAA520' }}>
+                              <i className='fas fa-star' aria-hidden='true'></i>
+                              <i className='fas fa-star' aria-hidden='true'></i>
+                              <i className='fas fa-star' aria-hidden='true'></i>
+                              <i className='fas fa-star' aria-hidden='true'></i>
+                              <i className='fas fa-star' aria-hidden='true'></i>
+                            </div>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="wrap-flex">
@@ -102,8 +123,7 @@ class Dashboard extends Component {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>           
             <Footer />
           </main>
         ))}
