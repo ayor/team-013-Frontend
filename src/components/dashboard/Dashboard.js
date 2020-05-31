@@ -27,7 +27,6 @@ class Dashboard extends Component {
         .get(url)
         .then((res) => {
           const teacherData = res.data.data;
-          console.log(teacherData);
           this.setState({ teacherData });
         })
         .catch((error) => console.log(error));
