@@ -123,8 +123,7 @@ class Dashboard extends Component {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>           
             <Footer />
           </main>
         ))}
