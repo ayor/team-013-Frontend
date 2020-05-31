@@ -95,14 +95,6 @@ h3 {
   background-repeat: no-repeat;
 }
 
-/* removed from the main class background: url('./image/bg-img.jpg');
-background-size: cover;
-  background-blend-mode: multiply;
-  background-repeat: no-repeat; */
-
-.main-bg {
-  background-color: var(--clr-light);
-}
 
 .wrap {
   padding-bottom: 4rem;
@@ -116,7 +108,7 @@ background-size: cover;
 }
 
 /* header */
-nav {
+/* nav {
   width: 100%;
   height: auto;
   z-index: 20;
@@ -125,6 +117,10 @@ nav {
   background-color: var(--clr-dark);
   margin-bottom: 2em;
  
+} */
+
+.nav-list {
+  display: none;
 }
 
 .logo {
@@ -472,7 +468,7 @@ nav .nav-list .nav-item .link.active {
   justify-content: space-evenly;
   align-self: center;
   align-items: center;
-  margin: 20px 20px ;
+  margin: 0px 20px 20px 20px ;
   padding: 0px 100px;
   font-family: 'Nunito', sans-serif;
   border-bottom: 1px solid rgb(151, 152, 153)
