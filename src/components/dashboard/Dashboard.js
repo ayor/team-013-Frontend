@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../layout/Navbar';
-import profilePic from '../../image/profilePic.jpg';
 import Footer from '../footer/Footer';
 
 
@@ -28,7 +27,6 @@ class Dashboard extends Component {
         .get(url)
         .then((res) => {
           const teacherData = res.data.data;
-          console.log(teacherData);
           this.setState({ teacherData });
         })
         .catch((error) => console.log(error));
@@ -105,33 +103,32 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 </div>
-                <div className='flex-item'>
-                  <div className='flex-data'>
-                    <div className='flex-data-item'>
-                      <ul>
+                <div className="wrap-flex">
+                  <div className="data-item">
+                    <ul className="right">
                       <li>Institution Attended</li>
-                        <li>Level Of Education</li>
-                        <li>Department</li>
-                        <li>GPA</li>
-                        <li>Years Of Experience</li>
-                      </ul>
-                    </div>
-                    <div className='flex-data-item'>
-                      <ul>
+                      <li>Level Of Education</li>
+                      <li>Department</li>
+                      <li>GPA</li>
+                      <li>Years Of Experience</li>
+                    </ul>
+                  </div>
+                  <div className="data-item">
+                    <ul>
                       <li>{data.school}</li>
-                        <li>{data.levelOfEducation}</li>
-                        <li>{data.courseOfStudy}</li>
-                        <li>{data.gpa}</li>
-                        <li>{data.yearOfExperience}</li>
-                      </ul>
-                    </div>
+                      <li>{data.levelOfEducation}</li>
+                      <li>{data.courseOfStudy}</li>
+                      <li>{data.gpa}</li>
+                      <li>{data.yearOfExperience}</li>
+                    </ul>
                   </div>
                 </div>
-             </div>
-              <Footer />
-            </main>
-          ))
-        }
+              </div>
+            </div>
+            <Footer />
+          </main>
+        ))}
+
       </div>
     )
   }
