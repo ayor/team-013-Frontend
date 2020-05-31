@@ -49,7 +49,6 @@ class SignUp extends Component {
       });
     };
     reader.readAsDataURL(file);
-
   }
 
   async handleSubmit(event) {
