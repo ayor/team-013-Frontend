@@ -46,10 +46,7 @@ class Dashboard extends Component {
         {
           getData.map((data) => (
             <main className="dashboard" key={data._id}>
-              <Navbar signout="Log Out" userName={data.firstName} takeTest="Take a Test"/> <br /><br /><br /><br />
-              {/* <h4 className="text-center" style={{ marginTop: '4.5rem', color: 'var(--clr-light)' }}>
-                Welcome {data.firstName}!
-              </h4> */}
+              <Navbar signout="Log Out" userName={data.firstName} takeTest="Take a Test"/> <br /><br /><br /><br />             
               <div className='flex-wrap'>
                 <div className='flex-item'>
                   <div className='profile-info'>
