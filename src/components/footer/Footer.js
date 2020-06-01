@@ -43,7 +43,9 @@ const Footer = () => (
 
       <p className="footer-company-about">
         <span>About the company</span>
-        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+        We are a team of highly experienced engineers focused on providing scalable and robust
+        application to our customers.
+        <a href="#" className="link"><i className="fas fa-arrow-right"></i>Learn More</a>
       </p>
 
       <div className="footer-icons">
