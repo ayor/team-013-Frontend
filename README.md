@@ -3,6 +3,8 @@ barebones setup for JavaScript / Node projects replace this with a one-liner phr
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd9d57d9ad4f4568ab85d467404e7d2e)](https://app.codacy.com/gh/BuildForSDG/team-013-QualifiedTeachers?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/team-013-QualifiedTeachers&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://img.shields.io/badge/Code%20Quality-D-red)](https://img.shields.io/badge/Code%20Quality-D-red)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/44cc600c-a5cd-4d80-b20a-45893ef5ec26/deploy-status)](https://app.netlify.com/sites/upbeat-swartz-8c7a8c/deploys)
+
 
 ## About
 
