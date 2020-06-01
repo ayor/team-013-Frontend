@@ -90,7 +90,7 @@ const SignUp = (props) => {
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-user"></i></span>
                 </div>
 
                 <input
@@ -107,7 +107,7 @@ const SignUp = (props) => {
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-user"></i></span>
                 </div>
 
                 <input
@@ -120,18 +120,18 @@ const SignUp = (props) => {
                 />
 
               </div>
-              {errors.username && <p className="text-danger">This field is required</p>}
+              
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
-                  <span className="input-group-text" id="basic-addon1">@</span>
+                  <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
                 </div>
                 <input
                   className="form-control"
                   type="text"
                   name="username"
                   aria-label="Username" aria-describedby="basic-addon1"
-                  ref={register({ required: true })}
+                  ref={register}
                   placeholder="Username"
 
                 />
@@ -140,7 +140,7 @@ const SignUp = (props) => {
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">@</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-envelope"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -157,13 +157,13 @@ const SignUp = (props) => {
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">#</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-phone-alt"></i></span>
                 </div>
 
                 <input
                   className="form-control"
-                  type="text"
                   name="phone"
+                  type="tel"
                   ref={register({ required: true })}
                   placeholder="Telephone"
 
@@ -172,7 +172,7 @@ const SignUp = (props) => {
               {errors.password && <p className="text-danger">This field is required and most be a minimun of 6 letters</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-lock"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -187,11 +187,11 @@ const SignUp = (props) => {
               {errors.yearOfExperience && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-sort-numeric-up"></i></span>
                 </div>
                 <input
                   className="form-control"
-                  type="text"
+                  type="number"
                   name="yearOfExperience"
                   ref={register({ required: true })}
                   placeholder="Years of Experience"
@@ -202,7 +202,7 @@ const SignUp = (props) => {
               {errors.school && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-school"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -217,7 +217,7 @@ const SignUp = (props) => {
               {errors.levelOfEducation && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-certificate"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -233,7 +233,7 @@ const SignUp = (props) => {
             <div className="col">
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text" id="addon-wrapping">*</span>
+                  <span className="input-group-text" id="addon-wrapping"><i className="fas fa-map-pin"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -248,7 +248,7 @@ const SignUp = (props) => {
               {errors.state && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-map-marker"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -263,7 +263,7 @@ const SignUp = (props) => {
               {errors.country && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+                  <span className="input-group-text text-danger" id="addon-wrapping"><i className="fas fa-globe-africa"></i></span>
                 </div>
                 <input
                   className="form-control"
@@ -277,8 +277,9 @@ const SignUp = (props) => {
 
               {errors.subjectToTeach && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
+              <span className="text-danger" style={{ paddingRight: '1rem' }}>*</span>
                 <label className="">What subject would you like to teach?</label><span style={{ paddingRight: '1rem' }}></span>
-                <select name="subjectToTeach" ref={register({ required: true })}>
+                <select name="courseOfStudy" ref={register({ required: true })}>
                   <option value="english">English language</option>
                   <option value="mathematics">Mathematics</option>
                   <option value="biology">Biology</option>
@@ -302,6 +303,7 @@ const SignUp = (props) => {
 
               {errors.gpa && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
+              <span className="text-danger" style={{ paddingRight: '1rem' }}>*</span>
                 <label className="">Grade:</label><span style={{ paddingRight: '1rem' }}></span>
                 <select name="gpa" ref={register({ required: true })}>
                   <option value="firstClass">First Class</option>
@@ -315,10 +317,10 @@ const SignUp = (props) => {
                 </select>
               </div>
 
-              {errors.image && <p className="text-danger">You must upload your photo to proceed</p>}
+      
               <div className="form-group">
                 <label>Passport photo</label><span style={{ paddingRight: '1rem' }}></span>
-                <input type="file" name="image" onChange={fileHandle} ref={register({ required: true })} />
+                <input type="file" name="image" onChange={fileHandle} ref={register} />
               </div>
 
               <div className="input-group form-group">
@@ -338,7 +340,7 @@ const SignUp = (props) => {
                     name="gender"
                     value="female"
                     ref={register}
-                  />{' '}
+                  defaultChecked />{' '}
             Female
           </label>
               </div>
@@ -360,10 +362,11 @@ const SignUp = (props) => {
             </div>
           </div>
 
-
-          <button className="btnSubmit justify-center" type="submit">
-            Create Account
+          <div className="d-flex justify-content-center" >
+            <button className="btnSubmit" type="submit">
+              Create Account
                     </button>
+          </div>
         </form>
       </div>
       <Footer />
