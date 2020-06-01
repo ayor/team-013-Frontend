@@ -18,7 +18,7 @@ class SignUp extends Component {
       yearOfExperience: '',
       school: '',
       levelOfEducation: '',
-      courseOfStudy: '',
+      subjectToTeach: '',
       address: '',
       state: '',
       country: '',
@@ -51,14 +51,22 @@ class SignUp extends Component {
     reader.readAsDataURL(file);
   }
 
-  async handleSubmit(event) {
-    event.preventDefault();
+  convertUserObjectToFormData() {
     const user = this.state;
     const data = Object.entries(user);
     const formData = new FormData();
     data.forEach((item, index, array) => {
       formData.append(item[0], item[1]);
     });
+    console.log(user);
+    return formData;
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = this.convertUserObjectToFormData();
+
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
     await axios.post(url, formData)
       .then((res) => {
@@ -71,10 +79,16 @@ class SignUp extends Component {
     return (
       <main className="main main-bg">
         <div className="wrap">
-          <Navbar home="Home" signin="Sign In" /> <br />
-          <h3 className="form-header text-center">Create Your Account</h3>
-          <form className="form text-center" encType="multiparty/form-data" onSubmit={this.handleSubmit}>
-            <div className="form-group">
+          <Navbar home="Home" signin="Sign In" /> <br /><br /><br />
+          <h2 className="text-center" style={{
+            paddingTop: '4rem'
+          }}>Create Your Account</h2>
+          <form className="container-md" encType="multiparty/form-data" onSubmit={this.handleSubmit}>
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -84,7 +98,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -94,17 +112,25 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
+
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">@</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
                 name="username"
+                aria-label="Username" aria-describedby="basic-addon1"
                 value={this.state.username}
                 placeholder="Username"
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
+
+
+            <div className="input-group form-group">
               <input
                 className="form-control"
                 type="email"
@@ -113,9 +139,16 @@ class SignUp extends Component {
                 placeholder="Email"
                 onChange={this.handleChange}
               />
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">@</span>
+              </div>
             </div>
-            <div className="form-group">
-              <span className="text-danger">*</span>
+
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">#</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -125,8 +158,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
-              <span className="text-danger">*</span>
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="password"
@@ -137,7 +173,11 @@ class SignUp extends Component {
                 minLength="6"
               />
             </div>
-            <div className="form-group">
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -147,8 +187,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
-              <span className="text-danger">*</span>
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -158,7 +201,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -169,15 +216,34 @@ class SignUp extends Component {
                 placeholder="Highest Educational Qualification"
               />
             </div>
-            <div className="form-group">
-              <label className="course">Course Department</label>
-              <select name="courseOfStudy" value={this.state.courseOfStudy} onChange={this.handleChange}>
-                <option value="science">Science</option>
-                <option value="social science">Social Science</option>
-                <option value="arts">Arts</option>
+
+            <div className="input-group form-group">
+              <label className="">What subject would you like to teach?</label><span style={{ paddingRight: '1rem' }}></span>
+              <select name="subjectToTeach" value={this.state.subjectToTeach} onChange={this.handleChange}>
+                <option value="english">English language</option>
+                <option value="mathematics">Mathematics</option>
+                <option value="biology">Biology</option>
+                <option value="physics">Physics</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="commerce">Commerce</option>
+                <option value="governement">Government</option>
+                <option value="geography">Geography</option>
+                <option value="accounting">Accounting</option>
+                <option value="englishlit">English literature</option>
+                <option value="crk">Christain Religious Knowledge </option>
+                <option value="economics">Economics </option>
+                <option value="irk">Islamic Religious Knowledge </option>
+                <option value="civicedu">Civic Education </option>
+                <option value="insurance">Insurance </option>
+                <option value="currentaffairs">Current Affairs </option>
+                <option value="history">History </option>
               </select>
             </div>
-            <div className="form-group">
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -187,8 +253,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
-              <span className="text-danger">*</span>
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -198,7 +267,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
+
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text text-danger" id="addon-wrapping">*</span>
+              </div>
               <input
                 className="form-control"
                 type="text"
@@ -208,27 +281,29 @@ class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
-              <label className="gpa">Graduated with</label>
+
+            <div className="input-group form-group">
+              <label className="">Graduated degree:</label><span style={{ paddingRight: '1rem' }}></span>
               <select name="gpa" value={this.state.gpa} onChange={this.handleChange}>
                 <option value="firstClass">First Class</option>
-                <option value="2.1">Second class upper</option>
-                <option value="2.2">Second class lower</option>
-                <option value="3">Third class</option>
+                <option value="2.1">Second Class Upper</option>
+                <option value="2.2">Second Class Lower</option>
+                <option value="3">Third Class</option>
                 <option value="distinction">Distinction</option>
                 <option value="upperCredit">Upper Credit</option>
                 <option value="lowerCredit">Lower Credit</option>
-                <option value="pass">pass</option>
+                <option value="pass">Pass</option>
               </select>
             </div>
 
-            <div className="form-group profile-pic">
+            <div className="form-group">
+              <label>Upload your passport photo</label><span style={{ paddingRight: '1rem' }}></span>
               <input type="file" onChange={this.fileHandle} />
             </div>
 
-            <div className="form-group">
+            <div className="input-group form-group">
               <span className="text-danger">*</span>
-              <label className="gender-label">
+              <label className="">
                 <input
                   type="radio"
                   name="gender"
@@ -238,7 +313,7 @@ class SignUp extends Component {
                 />{' '}
                 Male
               </label>
-              <label className="gender-label">
+              <label className="">
                 <input
                   type="radio"
                   name="gender"
@@ -250,17 +325,20 @@ class SignUp extends Component {
               </label>
             </div>
 
-            <div className="form-group">
-              <span className="text-danger">*</span>
+            <div className="input-group form-group">
+              <div className="input-group-prepend">
+                <span className="text-danger" id="addon-wrapping">*</span>
+              </div><span style={{ paddingRight: '1rem' }}></span>
+              <label>Date of Birth</label><span style={{ paddingRight: '1rem' }}></span>
               <input
                 className="form-control"
                 type="date"
                 name="dateOfBirth"
                 value={this.state.dateOfBirth}
-                placeholder="Date of Birth"
                 onChange={this.handleChange}
               />
             </div>
+
             <button className="btnSubmit" type="submit">
               Create Account
             </button>

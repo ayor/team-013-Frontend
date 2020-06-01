@@ -8,8 +8,11 @@
 
 /* Custom Properties */
 :root {
-  --ff-primary: 'Source Sans Pro', 'sans-serif';
-  --ff-secondary: 'Source Code Pro', monospace;
+  
+  /* --ff-primary: 'Playfair Display', serif; */
+  --ff-primary: 'Montserrat', 'sans-serif';
+  --ff-secondary: 'Montserrat', sans-serif;
+  --ff-secondary: 'Josefin Slab', serif;
 
   --fw-reg: 300;
   --fw-bold: 900;

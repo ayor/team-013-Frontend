@@ -37,8 +37,10 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "expand-brackets": "^4.0.0",
+    "font-awesome": "^4.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "3.25.0",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
