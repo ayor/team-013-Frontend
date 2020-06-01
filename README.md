@@ -27,7 +27,27 @@ This Solution helps implement this framework by serving as a sourcing tool for o
 Solution solves the Problem 4 (Quality Education) of the SDG (Building a solution that will help substantially increase the supply of qualified  teachers in our community)
 
 ## Usage
- How would someone use what you have built, include URLs to the deployed app, service e.t.c when you have it setup.
+How will the community make use of this app?
+
+Comunity can make use of this app first by registering, and only qualified teachers are allowed to apply.
+After successful registration, prospective teachers are required to undertake a test to ascertain their knowledge.
+The test and other critiria (e.g. interview etc.) would be used to determine if a prospective teacher is qualified or not.
+Qualified teachers are linked to job placement opportunity within their communities.
+Both qualified and unqualified teachers are provided learning materials to improve their knowledge and unqualified teachers are allowed to re-take the test after a stipulated period.
+Interested applicants can visit this site on https://upbeat-swartz-8c7a8c.netlify.app/
+
+How will a programmer make use of this app?
+
+Get started by cloning the repo git clone https://github.com/BuildForSDG/team-013-Frontend.git
+change into the directory: cd team-013-Frontend
+Install yarn package manager (optional if you prefer npm)
+Start server: yarn start
+Start liniting: yarn lint
+Once the server is started you can us Postman or any other testing tool to test the endpionts.
+Jest: For runnung tests. We strongly recommend that JavaScript projects use Jest.
+Yarn: For installing nodejs packages. (optional if you prefer npm)
+Eslint: For formating code to javascript standard.
+Babel-node: For transforming es6+ to es5
 
 
 ## Setup
