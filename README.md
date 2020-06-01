@@ -3,7 +3,7 @@ barebones setup for JavaScript / Node projects replace this with a one-liner phr
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd9d57d9ad4f4568ab85d467404e7d2e)](https://app.codacy.com/gh/BuildForSDG/team-013-QualifiedTeachers?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/team-013-QualifiedTeachers&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://img.shields.io/badge/Code%20Quality-D-red)](https://img.shields.io/badge/Code%20Quality-D-red)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/44cc600c-a5cd-4d80-b20a-45893ef5ec26/deploy-status)](https://app.netlify.com/sites/upbeat-swartz-8c7a8c/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/44cc600c-a5cd-4d80-b20a-45893ef5ec26/deploy-status)](https://app.netlify.com/sites/felt-teachers/deploys)
 
 
 ## About
@@ -36,7 +36,7 @@ After successful registration, prospective teachers are required to undertake a 
 The test and other critiria (e.g. interview etc.) would be used to determine if a prospective teacher is qualified or not.
 Qualified teachers are linked to job placement opportunity within their communities.
 Both qualified and unqualified teachers are provided learning materials to improve their knowledge and unqualified teachers are allowed to re-take the test after a stipulated period.
-Interested applicants can visit this site on https://upbeat-swartz-8c7a8c.netlify.app/
+Interested applicants can visit this site on https://felt-teachers.netlify.app/
 
 How will a programmer make use of this app?
 
