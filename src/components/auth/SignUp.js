@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import Modal from '../modal/modal';
 
 class SignUp extends Component {
   constructor(props) {
@@ -25,13 +26,25 @@ class SignUp extends Component {
       gpa: '',
       image: null,
       gender: '',
-      dateOfBirth: ''
+      dateOfBirth: '',
+      show: false ,
+      
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fileHandle = this.fileHandle.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
+  showModal() {
+    this.setState({ show: true });
+  };
 
+  hideModal() {
+    (this.state.message=='succesfully registered')?this.props.history.push('/signin'):this.props.history.push('/signup');
+    this.setState({ show: false });
+      window.location.reload();
+  };
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
@@ -67,16 +80,31 @@ class SignUp extends Component {
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
     await axios.post(url, formData)
       .then((res) => {
-        this.props.history.push('/signin');
-      })
-      .catch((error) => console.log(error));
+        console.log(res);
+      if(res.data){
+        this.setState({ message: "succesfully registered" });
+        this.showModal()
+       
+      }else{
+        this.setState({ message: "please update all fields" });
+        this.showModal()
+      }
+    }).catch(err=>{
+      this.setState({ message: "user can't be created" });
+      this.showModal()
+      
+})
   }
 
   render() {
     return (
       <main className="main main-bg">
         <div className="wrap">
-          <Navbar home="Home" signin="Sign In" /> <br />
+          <Navbar/> 
+          <Modal show={this.state.show} handleClose={this.hideModal}>
+          <p>{this.state.message}</p>
+        
+        </Modal>
           <h3 className="form-header text-center">Create Your Account</h3>
           <form className="form text-center" encType="multiparty/form-data" onSubmit={this.handleSubmit}>
             <div className="form-group">
