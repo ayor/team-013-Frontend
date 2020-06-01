@@ -46,7 +46,7 @@ class SignIn extends Component {
         //  console.log(res.data);
         const { token } = res.data.data;
         localStorage.setItem('token', token);
-        // this.setState();
+        this.setState();
         const getToken = localStorage.getItem('token');
         if(getToken && getToken.length !== 0){
           this.setState({ message: "succesfully logged in" });

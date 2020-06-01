@@ -203,7 +203,9 @@ class SignUp extends Component {
               />
             </div>
             <div className="form-group">
-              <label className="course">Course Department</label>
+              <label className="course" style={{ color: '#228B22' }}>
+                Course Department
+              </label>
               <select name="courseOfStudy" value={this.state.courseOfStudy} onChange={this.handleChange}>
                 <option value="science">Science</option>
                 <option value="social science">Social Science</option>
@@ -242,7 +244,9 @@ class SignUp extends Component {
               />
             </div>
             <div className="form-group">
-              <label className="gpa">Graduated with</label>
+              <label className="gpa" style={{ color: '#228B22' }}>
+                Graduated with
+              </label>
               <select name="gpa" value={this.state.gpa} onChange={this.handleChange}>
                 <option value="firstClass">First Class</option>
                 <option value="2.1">Second class upper</option>
@@ -255,13 +259,13 @@ class SignUp extends Component {
               </select>
             </div>
 
-            <div className="form-group profile-pic">
+            <div className="form-group profile-pic" style={{ color: '#228B22' }}>
               <input type="file" onChange={this.fileHandle} />
             </div>
 
             <div className="form-group">
               <span className="text-danger">*</span>
-              <label className="gender-label">
+              <label className="gender-label" style={{ color: '#228B22' }}>
                 <input
                   type="radio"
                   name="gender"
@@ -271,7 +275,7 @@ class SignUp extends Component {
                 />{' '}
                 Male
               </label>
-              <label className="gender-label">
+              <label className="gender-label" style={{ color: '#228B22' }}>
                 <input
                   type="radio"
                   name="gender"
