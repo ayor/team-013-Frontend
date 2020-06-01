@@ -42,7 +42,7 @@ class Dashboard extends Component {
     return (
       <div>
         {getData.map((data) => (
-          <main className="dashboard" key={data._id}>
+          <main className="main dashboard" key={data._id}>
             <Navbar signout="Log Out" userName={data.firstName} takeTest="Take a Test" /> <br />
             <br />
             <br />

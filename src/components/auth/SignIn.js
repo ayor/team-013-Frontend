@@ -11,7 +11,7 @@ class SignIn extends Component {
     this.state = {
       loginKey: '',
       password: '',
-      show: false 
+      show: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,15 +28,15 @@ class SignIn extends Component {
 
   showModal() {
     this.setState({ show: true });
-  };
+  }
 
   hideModal() {
-    (this.state.message=='succesfully logged in')?this.props.history.push('/dashboard'):this.props.history.push('/signin');
+    (this.state.message == 'succesfully logged in') ? this.props.history.push('/dashboard') : this.props.history.push('/signin');
     this.setState({ show: false });
-      window.location.reload();
-  };
+    window.location.reload();
+  }
 
-   handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
     const user = this.state;
     const url = 'https://teachers-placement-backend.herokuapp.com/api/login';
@@ -48,36 +48,37 @@ class SignIn extends Component {
         localStorage.setItem('token', token);
         this.setState();
         const getToken = localStorage.getItem('token');
-        if(getToken && getToken.length !== 0){
-          this.setState({ message: "succesfully logged in" });
-          this.showModal()
-         
-        }else{
-          this.setState({ message: "wrong username/password combination" });
-          this.showModal()
+        if (getToken && getToken.length !== 0) {
+          this.setState({ message: 'succesfully logged in' });
+          this.showModal();
+        } else {
+          this.setState({ message: 'wrong username/password combination' });
+          this.showModal();
         }
-      }).catch(err=>{
-        this.setState({ message: "wrong username/password combination" });
-        this.showModal()
-  })
+      }).catch((err) => {
+        this.setState({ message: 'wrong username/password combination' });
+        this.showModal();
+      });
   }
 
   render() {
     return (
       <main className="main main-bg">
-        <Navbar  /> 
+        <Navbar />
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <p>{this.state.message}</p>
-        
+
         </Modal>
-        <h3 className="form-header text-center">Welcome, Sign In</h3>
+        <h3 className="form-header text-center" style={{
+          padding: '4rem', paddingBottom: '2rem'
+        }}>Welcome, Sign In</h3>
         <form className="form text-center" onSubmit={this.handleSubmit}>
           <div className="form-group input-icon">
-            <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone"/>
+            <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone" />
             <div className="icon-input"><i className="fas fa-user" aria-hidden="true"></i></div>
           </div> <br />
           <div className="form-group input-icon">
-            <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+            <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
             <div className="icon-input"><i className="fas fa-key" aria-hidden="true"></i></div>
           </div> <br />
           <button type="submit" className="btnSubmit">Sign In</button>
