@@ -4,9 +4,15 @@ import useForm from 'react-hook-form';
 import axios from 'axios';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import Modal from '../modal/modal';
 
 
 const SignUp = (props) => {
+
+  const state = {
+    show: false,
+    message: ''
+  };
   const { register, handleSubmit, errors } = useForm();
 
   const fileHandle = (event) => {
@@ -26,6 +32,18 @@ const SignUp = (props) => {
     return formData;
   };
 
+  const showModal = () => {
+    //  setState({ show: true });
+    state.show = true;
+  };
+
+  const hideModal = () => {
+    (state.message == 'succesfully registered') ? props.history.push('/signin') : props.history.push('/signup');
+    // setState({ show: false });
+    state.show = false;
+    window.location.reload();
+  };
+
   const onSubmit = async (data) => {
     console.log(data);
 
@@ -35,16 +53,33 @@ const SignUp = (props) => {
 
     await axios.post(url, formData)
       .then((res) => {
-        props.history.push('/signin');
+        // props.history.push('/signin');
+        if (res.data) {
+          // this.setState({ message: 'succesfully registered' });
+          state.message = 'succesfully registered';
+          showModal();
+        } else {
+          // setState({ message: 'please update all fields' });
+          state.message = 'please update all fields';
+          showModal();
+        }
       })
-      .catch((error) => console.log(error));
+      .catch((err) => {
+        // setState({ message: "user can't be created" });
+        state.message = "user can't be created";
+        showModal();
+      });
   };
 
 
   return (
     <main className="main main-bg">
       <div className="wrap">
-        <Navbar home="Home" signin="Sign In" /> <br /><br /><br />
+        <Navbar home="Home" signin="Sign In" />
+        <Modal show={state.show} handleClose={hideModal}>
+          <p>{state.message}</p>
+
+        </Modal>
         <h2 className="text-center" style={{
           padding: '4rem'
         }}>Create Your Account</h2>
