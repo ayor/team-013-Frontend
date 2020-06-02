@@ -2,18 +2,17 @@
 import React from 'react';
 import useForm from 'react-hook-form';
 import axios from 'axios';
+import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-import Modal from '../modal/modal';
-
 
 const SignUp = (props) => {
-
   const state = {
     show: false,
     message: ''
   };
   const { register, handleSubmit, errors } = useForm();
+  const { showSuccess, showFailed } = new Alert();
 
   const fileHandle = (event) => {
     event.preventDefault();
@@ -22,52 +21,32 @@ const SignUp = (props) => {
     reader.readAsDataURL(file);
   };
 
+
   const convertUserObjectToFormData = (user) => {
     const data = Object.entries(user);
     const formData = new FormData();
     data.forEach((item, index, array) => {
       formData.append(item[0], item[1]);
     });
-    console.log(data);
+    console.log(formData);
     return formData;
   };
 
-  const showModal = () => {
-    //  setState({ show: true });
-    state.show = true;
-  };
-
-  const hideModal = () => {
-    (state.message == 'succesfully registered') ? props.history.push('/signin') : props.history.push('/signup');
-    // setState({ show: false });
-    state.show = false;
-    window.location.reload();
-  };
-
   const onSubmit = async (data) => {
-    console.log(data);
-
     const formData = convertUserObjectToFormData(data);
 
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
 
     await axios.post(url, formData)
       .then((res) => {
-        // props.history.push('/signin');
         if (res.data) {
-          // this.setState({ message: 'succesfully registered' });
-          state.message = 'succesfully registered';
-          showModal();
+          showSuccess('Registration successful');
+          props.history.push('/signin');
         } else {
-          // setState({ message: 'please update all fields' });
-          state.message = 'please update all fields';
-          showModal();
+          showFailed('Failed to register user, please try again');
         }
-      })
-      .catch((err) => {
-        // setState({ message: "user can't be created" });
-        state.message = "user can't be created";
-        showModal();
+      }).catch((err) => {
+        console.log(err.message);
       });
   };
 
@@ -76,10 +55,6 @@ const SignUp = (props) => {
     <main className="main main-bg">
       <div className="wrap">
         <Navbar home="Home" signin="Sign In" />
-        <Modal show={state.show} handleClose={hideModal}>
-          <p>{state.message}</p>
-
-        </Modal>
         <h2 className="text-center" style={{
           padding: '4rem'
         }}>Create Your Account</h2>
@@ -120,7 +95,7 @@ const SignUp = (props) => {
                 />
 
               </div>
-              
+
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
@@ -277,7 +252,7 @@ const SignUp = (props) => {
 
               {errors.subjectToTeach && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
-              <span className="text-danger" style={{ paddingRight: '1rem' }}>*</span>
+                <span className="text-danger" style={{ paddingRight: '1rem' }}>*</span>
                 <label className="">What subject would you like to teach?</label><span style={{ paddingRight: '1rem' }}></span>
                 <select name="courseOfStudy" ref={register({ required: true })}>
                   <option value="english">English language</option>
@@ -303,7 +278,7 @@ const SignUp = (props) => {
 
               {errors.gpa && <p className="text-danger">This field is required</p>}
               <div className="input-group form-group">
-              <span className="text-danger" style={{ paddingRight: '1rem' }}>*</span>
+                <span className="text-danger" style={{ paddingRight: '1rem' }}>*</span>
                 <label className="">Grade:</label><span style={{ paddingRight: '1rem' }}></span>
                 <select name="gpa" ref={register({ required: true })}>
                   <option value="firstClass">First Class</option>
@@ -317,7 +292,7 @@ const SignUp = (props) => {
                 </select>
               </div>
 
-      
+
               <div className="form-group">
                 <label>Passport photo</label><span style={{ paddingRight: '1rem' }}></span>
                 <input type="file" name="image" onChange={fileHandle} ref={register} />
@@ -340,7 +315,7 @@ const SignUp = (props) => {
                     name="gender"
                     value="female"
                     ref={register}
-                  defaultChecked />{' '}
+                    defaultChecked />{' '}
             Female
           </label>
               </div>
