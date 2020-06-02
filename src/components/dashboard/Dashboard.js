@@ -70,7 +70,7 @@ class Dashboard extends Component {
                   >
                     <div className="profile-item">
                       <div>
-                        <h1>{data.firstName + ' ' + data.lastName}</h1>
+                        <h1>{`${data.firstName} ${data.lastName}`}</h1>
                       </div>
                       <hr />
                       <div

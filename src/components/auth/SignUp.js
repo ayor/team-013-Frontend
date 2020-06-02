@@ -2,18 +2,17 @@
 import React from 'react';
 import useForm from 'react-hook-form';
 import axios from 'axios';
+import Alert from '../modal/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-import Modal from '../modal/modal';
-
 
 const SignUp = (props) => {
-
   const state = {
     show: false,
     message: ''
   };
   const { register, handleSubmit, errors } = useForm();
+  const { showSuccess, showFailed } = new Alert();
 
   const fileHandle = (event) => {
     event.preventDefault();
@@ -22,34 +21,31 @@ const SignUp = (props) => {
     reader.readAsDataURL(file);
   };
 
+
   const convertUserObjectToFormData = (user) => {
     const data = Object.entries(user);
     const formData = new FormData();
     data.forEach((item, index, array) => {
       formData.append(item[0], item[1]);
     });
-    console.log(data);
+    console.log(formData);
     return formData;
   };
 
-
   const onSubmit = async (data) => {
-    console.log(data);
-
     const formData = convertUserObjectToFormData(data);
 
     const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
 
     await axios.post(url, formData)
       .then((res) => {
-        if (res.data !== []) {
-          console.log(res.data);
-          props.history.push('/signin');
+        if (res.data) {
+          showSuccess('Registration successful');
+        } else {
+          showFailed('Failed to register user, please try again');
         }
-      })
-      .catch((err) => {
-        // setState({ message: "user can't be created" });
-        state.message = "user can't be created";
+      }).catch((err) => {
+        console.log(err.message);
       });
   };
 
