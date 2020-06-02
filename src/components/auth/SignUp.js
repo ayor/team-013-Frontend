@@ -2,7 +2,7 @@
 import React from 'react';
 import useForm from 'react-hook-form';
 import axios from 'axios';
-import Alert from '../modal/alert';
+import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
 

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Alert from '../modal/alert';
+import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-import Modal from '../modal/modal';
 
 
 class SignIn extends Component {
@@ -45,11 +44,9 @@ class SignIn extends Component {
         if (getToken && getToken.length !== 0) {
           this.successAlert('Successfully logged in');
           this.props.history.push('/dashboard');
-        } else {
-          this.failedAlert('wrong username/password combination');
         }
       }).catch((err) => {
-        console.log(err.message);
+        this.failedAlert('wrong username/password combination');
       });
   }
 
