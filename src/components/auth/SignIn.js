@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Alert from '../modal/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
 import Modal from '../modal/modal';
@@ -13,10 +14,13 @@ class SignIn extends Component {
       password: '',
       show: false
     };
+    const { showSuccess, showFailed } = new Alert();
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
+
+    this.successAlert = showSuccess.bind(this);
+    this.failedAlert = showFailed.bind(this);
   }
 
   handleChange(event) {
@@ -24,16 +28,6 @@ class SignIn extends Component {
     this.setState({
       [name]: value
     });
-  }
-
-  showModal() {
-    this.setState({ show: true });
-  }
-
-  hideModal() {
-    (this.state.message == 'succesfully logged in') ? this.props.history.push('/dashboard') : this.props.history.push('/signin');
-    this.setState({ show: false });
-    window.location.reload();
   }
 
   handleSubmit(event) {
@@ -49,15 +43,13 @@ class SignIn extends Component {
         this.setState();
         const getToken = localStorage.getItem('token');
         if (getToken && getToken.length !== 0) {
-          this.setState({ message: 'succesfully logged in' });
-          this.showModal();
+          this.successAlert('Successfully logged in');
+          this.props.history.push('/dashboard');
         } else {
-          this.setState({ message: 'wrong username/password combination' });
-          this.showModal();
+          this.failedAlert('wrong username/password combination');
         }
       }).catch((err) => {
-        this.setState({ message: 'wrong username/password combination' });
-        this.showModal();
+        console.log(err.message);
       });
   }
 
@@ -65,10 +57,6 @@ class SignIn extends Component {
     return (
       <main className="main main-bg">
         <Navbar />
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-          <p>{this.state.message}</p>
-
-        </Modal>
         <h3 className="form-header text-center" style={{
           padding: '4rem', paddingBottom: '2rem'
         }}>Welcome, Sign In</h3>

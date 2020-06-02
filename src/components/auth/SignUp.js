@@ -41,6 +41,7 @@ const SignUp = (props) => {
       .then((res) => {
         if (res.data) {
           showSuccess('Registration successful');
+          props.history.push('/signin');
         } else {
           showFailed('Failed to register user, please try again');
         }
