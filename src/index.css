@@ -472,6 +472,8 @@ nav .nav-list .nav-item .link.active {
   margin-bottom:2em;
   border-radius: 30px;
   box-shadow: 1px 4px 4px #ccc;
+  background-color: azure;
+  padding: 1em;
 }
 
 
@@ -663,7 +665,7 @@ nav .nav-list .nav-item .link.active {
   align-self: center;
   align-items: center;
   margin: 0px 20px 20px 20px ;
-  padding: 0px 100px;
+  padding: 0px 50px;
   font-family: 'Nunito', sans-serif;
   border-bottom: 1px solid rgb(151, 152, 153)
 }
@@ -761,4 +763,28 @@ a:hover {
   padding: 5px 15px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* styling the Educational background info of the user */
+.education{
+  background-color: azure;
+  text-align: center;
+  width: 30%;
+  border-radius: 20px;
+  box-shadow: 2px 4px 4px #ccc;
+  border: 0.1px solid #ccc;
+  overflow: hidden;
+  margin-bottom: 2em;
+}
+
+.education h3{
+  background-color: #ddd;
+  padding: 5px;
+
+}
+
+.education #institution{
+  margin: 2em 0 0 0;
+  padding: 1em;
+  text-align: left;
 }
