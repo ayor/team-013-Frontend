@@ -344,7 +344,9 @@ const SignUp = (props) => {
           </div>
         </form>
       </div>
-      <Footer />
+      <div className='footer-display'>
+        <Footer />
+      </div>
     </main>
 
 

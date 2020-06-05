@@ -68,7 +68,9 @@ class SignIn extends Component {
           </div> <br />
           <button type="submit" className="btnSubmit">Sign In</button>
         </form>
-        <Footer />
+        <div className='footer-display'>
+          <Footer />
+        </div>
       </main>
     );
   }

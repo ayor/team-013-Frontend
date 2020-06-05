@@ -9,7 +9,10 @@ const Home = () => (
       <Navbar />
     </header> <br />
     <Content /> <br />
-    <Footer />
+    <div className='footer-display'>
+      <Footer />
+    </div>
+
   </main>
 );
 

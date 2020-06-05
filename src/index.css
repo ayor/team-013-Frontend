@@ -484,7 +484,7 @@ nav .nav-list .nav-item .link.active {
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
-	padding: 55px 50px;
+  padding: 55px 50px;
 }
 
 .footer-distributed .footer-left,
@@ -788,3 +788,11 @@ a:hover {
   padding: 1em;
   text-align: left;
 }
+
+.footer-display {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* end of edit  */

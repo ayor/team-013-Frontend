@@ -9,7 +9,7 @@ const Navbar = (props) => {
   let navbar = (
   <div className='nav_flex'>
     <div className='logoImage'><NavLink className="link" to="/"><img className="logo" src={logo} alt="" /></NavLink> </div>
-    <NavLink className="nav_link" activeClassName='current' to="/">Home</NavLink>
+    <NavLink className="nav_link" activeClassName='current' exact to="/">Home</NavLink>
     <div className='spanlink'>
       <NavLink className="nav_link" activeClassName='current' to="/signin">Login</NavLink>
       <NavLink className="nav_link" activeClassName='current' to="/signup" >Signup</NavLink>
