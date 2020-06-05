@@ -14,12 +14,18 @@ const SignUp = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const { showSuccess, showFailed } = new Alert();
 
-  const fileHandle = (event) => {
+    fileHandle(event) {
     event.preventDefault();
     const file = event.target.files[0];
     const reader = new FileReader();
+    reader.onload = () => {
+      this.setState({
+        image: file
+      });
+    };
     reader.readAsDataURL(file);
-  };
+
+  }
 
 
   const convertUserObjectToFormData = (user) => {
