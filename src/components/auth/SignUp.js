@@ -76,7 +76,7 @@ const SignUp = (props) => {
                   className="form-control"
                   type="text"
                   name="firstName"
-                  ref={register({ required: true })}
+                  ref={register({ required: true, minLength: 3 })}
                   placeholder="First Name"
 
                 />
@@ -93,15 +93,14 @@ const SignUp = (props) => {
                   className="form-control"
                   type="text"
                   name="lastName"
-                  ref={register({ required: true })}
+                  ref={register({ required: true, minLength: 3 })}
                   placeholder="Last Name"
 
                 />
 
               </div>
-
+              {errors.username && <p className="text-danger">Must be a minimun of 3 letters</p>}
               <div className="input-group form-group">
-
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
                 </div>
@@ -110,7 +109,7 @@ const SignUp = (props) => {
                   type="text"
                   name="username"
                   aria-label="Username" aria-describedby="basic-addon1"
-                  ref={register}
+                  ref={register({ minLength: 3 })}
                   placeholder="Username"
 
                 />
@@ -157,7 +156,7 @@ const SignUp = (props) => {
                   className="form-control"
                   type="password"
                   name="password"
-                  ref={register({ required: 'This field is required', minLength: 6 })}
+                  ref={register({ required: true, minLength: 6 })}
                   placeholder="Password"
                 />
 
@@ -210,6 +209,7 @@ const SignUp = (props) => {
 
             </div>
             <div className="col">
+            {errors.address && <p className="text-danger">Must be a minimun of 3 letters</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="addon-wrapping"><i className="fas fa-map-pin"></i></span>
@@ -218,7 +218,7 @@ const SignUp = (props) => {
                   className="form-control"
                   type="text"
                   name="address"
-                  ref={register}
+                  ref={register({ minLength: 3 })}
                   placeholder="Address"
 
                 />
