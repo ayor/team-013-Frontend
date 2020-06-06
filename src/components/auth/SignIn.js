@@ -36,7 +36,6 @@ class SignIn extends Component {
     axios
       .post(url, user)
       .then((res) => {
-        //  console.log(res.data);
         const { token } = res.data.data;
         localStorage.setItem('token', token);
         this.setState();

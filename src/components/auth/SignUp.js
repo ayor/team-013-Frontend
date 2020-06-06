@@ -26,9 +26,13 @@ const SignUp = (props) => {
     const data = Object.entries(user);
     const formData = new FormData();
     data.forEach((item, index, array) => {
-      formData.append(item[0], item[1]);
+      if (item[0] === 'image') {
+        formData.append(item[0], item[1][0]);
+      } else {
+        formData.append(item[0], item[1]);
+      }
     });
-    console.log(formData);
+    console.log(formData.values());
     return formData;
   };
 
