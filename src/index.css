@@ -213,6 +213,7 @@ ul {
     font-family: 'Nunito', sans-serif;
     color: #f3f3f3;
     line-height: 153%;
+    align-items: center;
     letter-spacing: 0.05em;
 }
 }
@@ -226,6 +227,7 @@ ul {
   color: #f3f3f3;
   line-height: 153%;
   letter-spacing: 0.02em;
+  align-items: center;
 }
 
 .content .content_body h3{
@@ -307,13 +309,7 @@ a {
 .form-header {
   color: var(--clr-light);
 }
-/* 
-.form {
-  margin-top: 4rem;
-} */
-/* .form-group {
-  margin-bottom: 10px !important;
-} */
+
 .form-control {
   width: 400px;
   margin: 0 auto;

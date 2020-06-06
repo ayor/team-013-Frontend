@@ -7,34 +7,28 @@ import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
 
 const SignUp = (props) => {
-  const state = {
-    show: false,
-    message: ''
-  };
   const { register, handleSubmit, errors } = useForm();
   const { showSuccess, showFailed } = new Alert();
 
-    fileHandle(event) {
+  const fileHandle = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     const reader = new FileReader();
-    reader.onload = () => {
-      this.setState({
-        image: file
-      });
-    };
     reader.readAsDataURL(file);
-
-  }
+  };
 
 
   const convertUserObjectToFormData = (user) => {
     const data = Object.entries(user);
     const formData = new FormData();
     data.forEach((item, index, array) => {
-      formData.append(item[0], item[1]);
+      if (item[0] === 'image') {
+        formData.append(item[0], item[1][0]);
+      } else {
+        formData.append(item[0], item[1]);
+      }
     });
-    console.log(formData);
+
     return formData;
   };
 
@@ -58,6 +52,7 @@ const SignUp = (props) => {
 
 
   return (
+    <div>
     <main className="main main-bg">
       <div className="wrap">
         <Navbar home="Home" signin="Sign In" />
@@ -67,7 +62,7 @@ const SignUp = (props) => {
         <form className="container-md" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)} >
           <div className="row">
             <div className="col">
-              {errors.firstName && <p className="text-danger">This field is required</p>}
+              {errors.firstName && <p className="text-danger">This field is required and most be a minimun of 3 letters</p>}
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
@@ -78,13 +73,13 @@ const SignUp = (props) => {
                   className="form-control"
                   type="text"
                   name="firstName"
-                  ref={register({ required: true })}
+                  ref={register({ required: true, minLength: 3 })}
                   placeholder="First Name"
 
                 />
 
               </div>
-              {errors.lastName && <p className="text-danger">This field is required</p>}
+              {errors.lastName && <p className="text-danger">This field is required and must be a minimum of 3 letters</p>}
               <div className="input-group form-group">
 
                 <div className="input-group-prepend">
@@ -95,15 +90,13 @@ const SignUp = (props) => {
                   className="form-control"
                   type="text"
                   name="lastName"
-                  ref={register({ required: true })}
+                  ref={register({ required: true, minLength: 3 })}
                   placeholder="Last Name"
 
                 />
 
               </div>
-
               <div className="input-group form-group">
-
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
                 </div>
@@ -159,7 +152,7 @@ const SignUp = (props) => {
                   className="form-control"
                   type="password"
                   name="password"
-                  ref={register({ required: 'This field is required', minLength: 6 })}
+                  ref={register({ required: true, minLength: 6 })}
                   placeholder="Password"
                 />
 
@@ -301,7 +294,7 @@ const SignUp = (props) => {
 
               <div className="form-group">
                 <label>Passport photo</label><span style={{ paddingRight: '1rem' }}></span>
-                <input type="file" name="image" onChange={fileHandle} ref={register} />
+                <input type="file" name="image" ref={register} onChange={fileHandle} />
               </div>
 
               <div className="input-group form-group">
@@ -350,8 +343,9 @@ const SignUp = (props) => {
           </div>
         </form>
       </div>
-      <Footer />
     </main>
+    <Footer />
+    </div>
 
 
   );
