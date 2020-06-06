@@ -34,7 +34,7 @@ How will the community make use of this app?
 Comunity can make use of this app first by registering, and only qualified teachers are allowed to apply.
 After successful registration, prospective teachers are required to undertake a test to ascertain their knowledge.
 The test and other critiria (e.g. interview etc.) would be used to determine if a prospective teacher is qualified or not.
-Qualified teachers are linked to job placement opportunity within their communities.
+Qualified teachers are linked to job placements opportunity within their communities.
 Both qualified and unqualified teachers are provided learning materials to improve their knowledge and unqualified teachers are allowed to re-take the test after a stipulated period.
 Interested applicants can visit this site on https://felt-teachers.netlify.app/
 
@@ -45,7 +45,7 @@ change into the directory: cd team-013-Frontend
 Install yarn package manager (optional if you prefer npm)
 Start server: yarn start
 Start liniting: yarn lint
-Once the server is started you can us Postman or any other testing tool to test the endpionts.
+Once the server is started you can use Postman or any other testing tool to test the endpoints.
 Jest: For runnung tests. We strongly recommend that JavaScript projects use Jest.
 Yarn: For installing nodejs packages. (optional if you prefer npm)
 Eslint: For formating code to javascript standard.
@@ -62,7 +62,7 @@ After clonning the repo to your local machine and moving into the cloned folder,
 
 All tests should be written in the `__tests__' folder. There's a sample in there.
 
-This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bundler. It is much simpler that WebPack and the others
+This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bundler. It is much simpler than WebPack and the others
 
 #### Hints
 
@@ -75,8 +75,8 @@ This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bun
 
 ## Authors
 
-Mentor
--Edewor Onyedika
+Program Assistant
+-Femi Akinsiku
 TTL
 -[Taiwo Sunday](https://github.com/taiwosunday99)
 FrontEnd Engineers
