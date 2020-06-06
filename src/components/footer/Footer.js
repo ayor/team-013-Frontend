@@ -7,7 +7,7 @@ const Footer = () => (
 
     <div className="footer-left">
 
-      <h3>Flet Teachers<span><img style={{ maxWidth: '50px' }} src={logo} /></span></h3>
+      <h3>Felt Teachers<span><img style={{ maxWidth: '50px' }} src={logo} /></span></h3>
 
       <p className="footer-links">
         <a href="#" className="link-1">Home</a>

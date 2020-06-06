@@ -99,7 +99,6 @@ const SignUp = (props) => {
                 />
 
               </div>
-              {errors.username && <p className="text-danger">Must be a minimun of 3 letters</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="basic-addon1"><i className="fas fa-at"></i></span>
@@ -109,7 +108,7 @@ const SignUp = (props) => {
                   type="text"
                   name="username"
                   aria-label="Username" aria-describedby="basic-addon1"
-                  ref={register({ minLength: 3 })}
+                  ref={register}
                   placeholder="Username"
 
                 />
@@ -209,7 +208,6 @@ const SignUp = (props) => {
 
             </div>
             <div className="col">
-            {errors.address && <p className="text-danger">Must be a minimun of 3 letters</p>}
               <div className="input-group form-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="addon-wrapping"><i className="fas fa-map-pin"></i></span>
@@ -218,7 +216,7 @@ const SignUp = (props) => {
                   className="form-control"
                   type="text"
                   name="address"
-                  ref={register({ minLength: 3 })}
+                  ref={register}
                   placeholder="Address"
 
                 />
