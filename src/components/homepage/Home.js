@@ -4,13 +4,16 @@ import Content from '../layout/Content';
 import Footer from '../footer/Footer';
 
 const Home = () => (
-  <main className="main main-bg">
-    <header>
-      <Navbar />
-    </header> <br />
-    <Content /> <br />
+  <div>
+    <main className="main main-bg">
+      <header>
+        <Navbar />
+      </header> <br />
+      <Content /> <br />
+
+    </main>
     <Footer />
-  </main>
+  </div>
 );
 
 export default Home;
