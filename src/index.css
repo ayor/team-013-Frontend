@@ -105,17 +105,13 @@ h3 {
   color: var(--clr-light);
 }
 
-.about {
-  color: var(--clr-light);
-  text-shadow: black;
-}
-
 .p-text {
   max-width: 60%;
 }
 
 .wrap {
   padding-bottom: 4rem;
+  color: var(--clr-light);
 }
 
 @media (max-width: 1024px) {
@@ -123,7 +119,10 @@ h3 {
     background-size: 100% 100%;
   }
 }
-
+.trans-bg {
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .nav-list {
   display: none;
 }
@@ -687,7 +686,6 @@ nav .nav-list .nav-item .link.active {
     width: 100%;
     padding: 15px;
     font-family: 'Nunito', sans-serif;
-    color: #ccc;
     line-height: 153%;
     letter-spacing: 0.02em;
   }
