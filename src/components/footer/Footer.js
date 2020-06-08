@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../../image/felt-teachers-logo.png';
 
 const Footer = () => (
@@ -10,11 +11,11 @@ const Footer = () => (
       <h3>Felt Teachers<span><img style={{ maxWidth: '50px' }} src={logo} /></span></h3>
 
       <p className="footer-links">
-        <a href="#" className="link-1">Home</a>
+        <NavLink to="/" className="link-1">Home</NavLink>
 
-        <a href="#">About</a>
+        <NavLink to="/aboutus">About Us</NavLink>
 
-        <a href="#">Contact</a>
+        <NavLink to="/contactus">Contact Us</NavLink>
       </p>
 
       <p className="footer-company-name">Felt Teachers &copy; 2020</p>
@@ -45,7 +46,7 @@ const Footer = () => (
         <span>About the company</span>
         We are a team of highly experienced engineers focused on providing scalable and robust
         application to our customers.
-        <a href="#" className="link"><i className="fas fa-arrow-right"></i>Learn More</a>
+        <NavLink to="/aboutus" className="link"><i className="fas fa-arrow-right"></i>Learn More</NavLink>
       </p>
 
       <div className="footer-icons">

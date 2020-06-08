@@ -10,7 +10,7 @@
 :root {
   
   /* --ff-primary: 'Playfair Display', serif; */
-  --ff-primary: 'Montserrat', 'sans-serif';
+  --ff-primary: 'Montserrat', sans-serif;
   --ff-secondary: 'Montserrat', sans-serif;
   --ff-secondary: 'Josefin Slab', serif;
 
@@ -94,8 +94,24 @@ h3 {
   min-height: 100vh;
   background: url('./image/freeimg_45380972freejpg850.jpg');
   background-size: cover;
-  background-blend-mode: lighten;
+  background-blend-mode: multiply;
   background-repeat: no-repeat;
+}
+
+.contact{
+  background: url('./image/contactus.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  color: var(--clr-light-dark);
+}
+
+.about{
+  background: url('./image/aboutus.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  color: var(--clr-light-dark);
 }
 
 
@@ -109,18 +125,6 @@ h3 {
   }
 
 }
-
-/* header */
-/* nav {
-  width: 100%;
-  height: auto;
-  z-index: 20;
-  padding: 0.2em;
-  color: var(--clr-light);
-  background-color: var(--clr-dark);
-  margin-bottom: 2em;
- 
-} */
 
 .nav-list {
   display: none;
@@ -474,7 +478,7 @@ nav .nav-list .nav-item .link.active {
 
 
 .footer-distributed{
-	background: #7E8D85;
+	background: var(--clr-light-dark);
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
