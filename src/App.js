@@ -4,7 +4,7 @@ import Home from './components/homepage/Home';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import Dashboard from './components/dashboard/Dashboard';
-import Test from './components/dashboard/test';
+import Test from './components/Test/test';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
-          <Route path="/test" component={Test} />
+          <Route path="/test/:userName/:course" component={Test} />
           <Route path="/dashboard" component={Dashboard} />
           <Route component={Home} />
         </Switch>

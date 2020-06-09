@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-import Icon from '../Icon'
+import Icon from '../Icon';
 
 
 const token = localStorage.getItem('token');
@@ -67,7 +67,7 @@ class Dashboard extends Component {
           let userContact = contactInfo.map(({name,iconType}) => ((<div><Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} />   {data[name]}</div>)));
           return (
             <main className="main dashboard" key={data._id}>
-              <Navbar signout="Log Out" userName={data.firstName} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} /> <br />
+              <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy}/> <br />
               <br />
 
               <div className="flex-wrap">
@@ -82,7 +82,7 @@ class Dashboard extends Component {
                         }}
                       >
                         <img src={`https://teachers-placement-backend.herokuapp.com/${data.image}`} alt="profile picture" />
-                      </div>{' '}
+                      </div>
                     </div>
                     <div
                       className="profile-info-item"
