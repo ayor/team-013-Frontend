@@ -36,7 +36,6 @@ class SignIn extends Component {
     axios
       .post(url, user)
       .then((res) => {
-        //  console.log(res.data);
         const { token } = res.data.data;
         localStorage.setItem('token', token);
         this.setState();
@@ -52,26 +51,26 @@ class SignIn extends Component {
 
   render() {
     return (
-      <main className="main main-bg">
-        <Navbar />
-        <h3 className="form-header text-center" style={{
-          padding: '4rem', paddingBottom: '2rem'
-        }}>Welcome, Sign In</h3>
-        <form className="form text-center" onSubmit={this.handleSubmit}>
-          <div className="form-group input-icon">
-            <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone" />
-            <div className="icon-input"><i className="fas fa-user" aria-hidden="true"></i></div>
-          </div> <br />
-          <div className="form-group input-icon">
-            <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
-            <div className="icon-input"><i className="fas fa-key" aria-hidden="true"></i></div>
-          </div> <br />
-          <button type="submit" className="btnSubmit">Sign In</button>
-        </form>
-        <div className='footer-display'>
-          <Footer />
-        </div>
-      </main>
+      <div>
+        <main className="main main-bg">
+          <Navbar />
+          <h3 className="form-header text-center" style={{
+            padding: '4rem', paddingBottom: '2rem'
+          }}>Welcome, Sign In</h3>
+          <form className="form text-center" onSubmit={this.handleSubmit}>
+            <div className="form-group input-icon">
+              <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone" />
+              <div className="icon-input"><i className="fas fa-user" aria-hidden="true"></i></div>
+            </div> <br />
+            <div className="form-group input-icon">
+              <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
+              <div className="icon-input"><i className="fas fa-key" aria-hidden="true"></i></div>
+            </div> <br />
+            <button type="submit" className="btnSubmit">Sign In</button>
+          </form>
+        </main>
+        <Footer />
+      </div>
     );
   }
 }
