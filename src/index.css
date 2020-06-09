@@ -79,6 +79,7 @@ h3 {
 
 h1 {
   font-size: var(--fs-h1);
+  color: var(--clr-light-dark);
 }
 h2 {
   font-size: var(--fs-h2);
@@ -217,6 +218,11 @@ ul {
     align-items: center;
     letter-spacing: 0.05em;
   }
+  .p-text {
+    max-width: 100%;
+    letter-spacing: 0.2rem;
+    line-height: 2rem;
+  }
 }
 
 /*  Home page  */
@@ -260,6 +266,28 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url('./image/bg-mobile.jpg');
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+  }
+
+  .contact {
+    background: url('./image/contactus-mobile.jpg');
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    color: var(--clr-light);
+  }
+  .content_body {
+    padding-top: 4rem;
+  }
   .jumbotron {
     width: 95%;
     margin-top: 5rem;

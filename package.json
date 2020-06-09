@@ -41,6 +41,7 @@
     "font-awesome": "^4.7.0",
     "react": "^16.13.1",
     "react-alertify": "^1.0.3",
+    "react-burger-menu": "^2.6.15",
     "react-dom": "^16.13.1",
     "react-hook-form": "3.25.0",
     "react-modal": "^3.11.2",

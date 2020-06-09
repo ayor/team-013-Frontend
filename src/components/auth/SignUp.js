@@ -55,16 +55,16 @@ const SignUp = (props) => {
     <div>
       <main className="main main-bg">
         <Navbar home="Home" signin="Sign In" />
-        <div className="wrap trans-bg">
-          <h2
+        <div className="wrap">
+          <h1
             className="text-center"
             style={{
               padding: '4rem'
             }}
           >
             Create Your Account
-          </h2>
-          <form className="container-md" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)}>
+          </h1>
+          <form className="container-md text-white" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
               <div className="col">
                 {errors.firstName && (
