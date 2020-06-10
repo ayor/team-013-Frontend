@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { slide as Menu } from 'react-burger-menu';
 import { NavLink } from 'react-router-dom';
 
 class SideBar extends React.Component {
   render() {
     // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
     return (
-      <Menu>
-        <div className="spanlink">
+        <div className="sidebar">
           <NavLink className="nav_link" activeClassName="" to="/">
             Home
           </NavLink>
@@ -24,7 +22,6 @@ class SideBar extends React.Component {
             Signup
           </NavLink>
         </div>
-      </Menu>
     );
   }
 }

@@ -54,55 +54,43 @@ class SignIn extends Component {
       <div>
         <main className="main main-bg">
           <Navbar />
-          <h1
-            className=" text-center"
-            style={{
-              padding: '4rem',
-              paddingBottom: '2rem'
-            }}
-          >
-            Welcome, Sign In
-          </h1>
-          <div
-            className="d-flex justify-content-start"
-            style={{
-              paddingLeft: '4rem',
-              paddingBottom: '2rem'
-            }}
-          >
-            <form className="form text-center" onSubmit={this.handleSubmit}>
-              <div className="form-group input-icon">
-                <input
-                  className="form-control input-signin"
-                  type="text"
-                  name="loginKey"
-                  value={this.state.loginKey}
-                  onChange={this.handleChange}
-                  placeholder="Username/Email/Telephone"
-                />
-                <div className="icon-input">
-                  <i className="fas fa-user" aria-hidden="true"></i>
-                </div>
-              </div>{' '}
-              <br />
-              <div className="form-group input-icon">
-                <input
-                  className="form-control input-signin"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  placeholder="Password"
-                />
-                <div className="icon-input">
-                  <i className="fas fa-key" aria-hidden="true"></i>
-                </div>
-              </div>{' '}
-              <br />
-              <button type="submit" className="btnSubmit">
-                Sign In
-              </button>
-            </form>
+          <div className="signinwrap">
+            <h1 className=" text-center d-flex justify-content-start signinpad-header">Welcome, Sign In</h1>
+            <div className="d-flex justify-content-start signinpad">
+              <form className="form text-center" onSubmit={this.handleSubmit}>
+                <div className="form-group input-icon">
+                  <input
+                    className="form-control input-signin"
+                    type="text"
+                    name="loginKey"
+                    value={this.state.loginKey}
+                    onChange={this.handleChange}
+                    placeholder="Username/Email/Telephone"
+                  />
+                  <div className="icon-input">
+                    <i className="fas fa-user" aria-hidden="true"></i>
+                  </div>
+                </div>{' '}
+                <br />
+                <div className="form-group input-icon">
+                  <input
+                    className="form-control input-signin"
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    placeholder="Password"
+                  />
+                  <div className="icon-input">
+                    <i className="fas fa-key" aria-hidden="true"></i>
+                  </div>
+                </div>{' '}
+                <br />
+                <button type="submit" className="btnSubmit">
+                  Sign In
+                </button>
+              </form>
+            </div>
           </div>
         </main>
         <Footer />

@@ -4,7 +4,7 @@ import Footer from '../footer/Footer';
 
 const AboutUs = () => (
   <div>
-    <div className="contact wrap">
+    <div className="main contact wrap">
       <Navbar />
       <div className="container" style={{ padding: '2rem' }}>
         <h1 className="text-center">About Us</h1>

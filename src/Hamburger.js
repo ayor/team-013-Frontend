@@ -1,11 +1,7 @@
 import React from 'react';
 
-const Hamburger = () => (
-  <button
-    className="hamburger"
-    id="nav-toggle"
-    aria-label="toggle-navigation"
-    >
+const Hamburger = (props) => (
+  <button className="hamburger" id="nav-toggle" aria-label="toggle-navigation" onClick={props.click}>
     <i className="fa fa-bars" aria-hidden="true"></i>
   </button>
 );
