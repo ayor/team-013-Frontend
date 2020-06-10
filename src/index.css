@@ -236,7 +236,9 @@ ul {
     width: 100%;
     padding: 4rem 0rem 0rem;
   }
-
+  .row-switch {
+    display: block !important;
+  }
   h1 {
     color: var(--clr-light);
   }
@@ -435,7 +437,7 @@ input[type='radio'] {
 .btnSubmit {
   display: inline-block;
   min-width: 8rem;
-  padding: 0.5em 1.5em;
+  padding: 0.5rem 1.5rem;
   background-color: var(--clr-light-dark);
   color: var(--clr-light);
   text-decoration: none;
@@ -444,7 +446,7 @@ input[type='radio'] {
   letter-spacing: 2px;
   transition: transform 200ms ease-in-out;
   border-radius: 0.5rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0rem;
   outline: none;
 }
 

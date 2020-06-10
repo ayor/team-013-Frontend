@@ -65,7 +65,7 @@ const SignUp = (props) => {
             Create Your Account
           </h1>
           <form className="container-md text-white" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)}>
-            <div className="row">
+            <div className="row row-switch">
               <div className="col">
                 {errors.firstName && (
                   <p className="text-danger">This field is required and most be a minimun of 3 letters</p>
@@ -340,9 +340,9 @@ const SignUp = (props) => {
                 </div>
 
                 <div className="form-group">
-                  <input type="file" name="image" ref={register} onChange={fileHandle} />
-                  <span style={{ paddingRight: '1rem' }}></span>
                   <label>Upload your passport photo</label>
+                  <span style={{ paddingRight: '0.5rem' }}></span>
+                  <input type="file" name="image" ref={register} onChange={fileHandle} />
                 </div>
 
                 <div className="input-group form-group">
