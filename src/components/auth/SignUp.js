@@ -5,6 +5,7 @@ import axios from 'axios';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import { NavLink } from 'react-router-dom';
 
 const SignUp = (props) => {
   const { register, handleSubmit, errors } = useForm();
@@ -55,17 +56,17 @@ const SignUp = (props) => {
     <div>
       <main className="main main-bg">
         <Navbar home="Home" signin="Sign In" />
-        <div className="wrap trans-bg">
-          <h2
+        <div className="wrap">
+          <h1
             className="text-center"
             style={{
               padding: '4rem'
             }}
           >
             Create Your Account
-          </h2>
-          <form className="container-md" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)}>
-            <div className="row">
+          </h1>
+          <form className="container-md text-white" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)}>
+            <div className="row row-switch">
               <div className="col">
                 {errors.firstName && (
                   <p className="text-danger">This field is required and most be a minimun of 3 letters</p>
@@ -340,9 +341,9 @@ const SignUp = (props) => {
                 </div>
 
                 <div className="form-group">
-                  <input type="file" name="image" ref={register} onChange={fileHandle} />
-                  <span style={{ paddingRight: '1rem' }}></span>
                   <label>Upload your passport photo</label>
+                  <span style={{ paddingRight: '0.5rem' }}></span>
+                  <input type="file" name="image" ref={register} onChange={fileHandle} />
                 </div>
 
                 <div className="input-group form-group">
@@ -376,6 +377,12 @@ const SignUp = (props) => {
               </button>
             </div>
           </form>
+          <div className="switch_link">
+            <span className="p-2">Already have an account?</span>
+            <NavLink className="nav_link" activeClassName="current" to="/signin">
+              Log In
+            </NavLink>
+          </div>
         </div>
       </main>
       <Footer />

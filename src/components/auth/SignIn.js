@@ -3,7 +3,7 @@ import axios from 'axios';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-
+import { NavLink } from 'react-router-dom';
 
 class SignIn extends Component {
   constructor(props) {
@@ -44,7 +44,8 @@ class SignIn extends Component {
           this.successAlert('Successfully logged in');
           this.props.history.push('/dashboard');
         }
-      }).catch((err) => {
+      })
+      .catch((err) => {
         this.failedAlert('wrong username/password combination');
       });
   }
@@ -54,20 +55,50 @@ class SignIn extends Component {
       <div>
         <main className="main main-bg">
           <Navbar />
-          <h3 className="form-header text-center" style={{
-            padding: '4rem', paddingBottom: '2rem'
-          }}>Welcome, Sign In</h3>
-          <form className="form text-center" onSubmit={this.handleSubmit}>
-            <div className="form-group input-icon">
-              <input className="form-control input-signin" type="text" name="loginKey" value={this.state.loginKey} onChange={this.handleChange} placeholder="Username/Email/Telephone" />
-              <div className="icon-input"><i className="fas fa-user" aria-hidden="true"></i></div>
-            </div> <br />
-            <div className="form-group input-icon">
-              <input className="form-control input-signin" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
-              <div className="icon-input"><i className="fas fa-key" aria-hidden="true"></i></div>
-            </div> <br />
-            <button type="submit" className="btnSubmit">Sign In</button>
-          </form>
+          <div className="signinwrap">
+            <h1 className=" text-center d-flex justify-content-start signinpad-header">Welcome, Sign In</h1>
+            <div className="d-flex justify-content-start signinpad">
+              <form className="form text-center" onSubmit={this.handleSubmit}>
+                <div className="form-group input-icon">
+                  <input
+                    className="form-control input-signin"
+                    type="text"
+                    name="loginKey"
+                    value={this.state.loginKey}
+                    onChange={this.handleChange}
+                    placeholder="Username/Email/Telephone"
+                  />
+                  <div className="icon-input">
+                    <i className="fas fa-user" aria-hidden="true"></i>
+                  </div>
+                </div>{' '}
+                <br />
+                <div className="form-group input-icon">
+                  <input
+                    className="form-control input-signin"
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    placeholder="Password"
+                  />
+                  <div className="icon-input">
+                    <i className="fas fa-key" aria-hidden="true"></i>
+                  </div>
+                </div>{' '}
+                <br />
+                <button type="submit" className="btnSubmit">
+                  Sign In
+                </button>
+              </form>
+            </div>
+          </div>
+          <div className="switch_link">
+            <span className=" p-2">Don't have an account?</span>
+            <NavLink className="nav_link" activeClassName="current" to="/signup">
+              Sign Up
+            </NavLink>
+          </div>
         </main>
         <Footer />
       </div>

@@ -4,7 +4,6 @@ import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
 import Icon from '../Icon';
 
-
 const token = localStorage.getItem('token');
 
 const authAxios = axios.create({
@@ -18,7 +17,8 @@ const instituteInfo = [
   { name: 'courseOfStudy', iconType: 'book-reader' },
   { name: 'levelOfEducation', iconType: 'graduation-cap' },
   { name: 'gpa', iconType: 'award' },
-  { name: 'yearOfExperience', iconType: 'star-half-alt' }];
+  { name: 'yearOfExperience', iconType: 'star-half-alt' }
+];
 
 const contactInfo = [
   { name: 'address', iconType: 'home' },
@@ -62,15 +62,29 @@ class Dashboard extends Component {
     return (
       <div>
         {getData.map((data) => {
-          const educationalBackground = instituteInfo.map(({ name, iconType }) => (<div><Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} />   {data[name]}</div>));
+          const educationalBackground = instituteInfo.map(({ name, iconType }) => (
+            <div>
+              <Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} /> {data[name]}
+            </div>
+          ));
 
-          const userContact = contactInfo.map(({ name, iconType }) => ((<div><Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} />   {data[name]}</div>)));
+          const userContact = contactInfo.map(({ name, iconType }) => (
+            <div>
+              <Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} /> {data[name]}
+            </div>
+          ));
           return (
-
             <main className="main dashboard" key={data._id}>
-              <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy} /> <br />
+              <Navbar
+                signout="Log Out"
+                userName={data.firstName}
+                userName={data.username}
+                takeTest="Take a Test"
+                isLoggedIn={this.state.loggedIn}
+                course={data.courseOfStudy}
+              />{' '}
               <br />
-
+              <br />
               <div className="flex-wrap">
                 <div className="flex-item">
                   <div className="profile-info">
@@ -82,7 +96,10 @@ class Dashboard extends Component {
                           overflow: 'hidden'
                         }}
                       >
-                        <img src={`https://teachers-placement-backend.herokuapp.com/${data.image}`} alt="profile picture" />
+                        <img
+                          src={`https://teachers-placement-backend.herokuapp.com/${data.image}`}
+                          alt="profile picture"
+                        />
                       </div>
                     </div>
                     <div
@@ -136,33 +153,25 @@ class Dashboard extends Component {
                   </div>
                 </div>
               </div>
-
               <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                <div className='education'>
+                <div className="education">
                   <div>
                     <h3>Educational Background</h3>
-                    <div id='institution'>
-                      {educationalBackground}
-                    </div>
+                    <div id="institution">{educationalBackground}</div>
                   </div>
                 </div>
-                <div className='education'>
+                <div className="education">
                   <div>
                     <h3>Contact</h3>
-                    <div id='institution'>
-                      {userContact}
-                    </div>
-
+                    <div id="institution">{userContact}</div>
                   </div>
                 </div>
-
               </div>
-              <Footer />
-            </main >
+            </main>
           );
-        })
-        }
-      </div >
+        })}
+        <Footer />
+      </div>
     );
   }
 }
