@@ -91,6 +91,11 @@ h3 {
   font-size: var(--fs-h3);
 }
 
+.switch_link {
+  color: var(--clr-light-dark);
+  padding-left: 4rem;
+}
+
 .main {
   position: relative;
   width: 100%;
@@ -238,6 +243,12 @@ ul {
   }
   .row-switch {
     display: block !important;
+  }
+  body {
+    color: var(--clr-light) !important;
+  }
+  .switch_link {
+    color: var(--clr-light);
   }
   h1 {
     color: var(--clr-light);

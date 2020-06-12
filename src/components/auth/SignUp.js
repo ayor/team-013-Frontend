@@ -5,6 +5,7 @@ import axios from 'axios';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import { NavLink } from 'react-router-dom';
 
 const SignUp = (props) => {
   const { register, handleSubmit, errors } = useForm();
@@ -376,6 +377,12 @@ const SignUp = (props) => {
               </button>
             </div>
           </form>
+          <div className="switch_link">
+            <span className="p-2">Already have an account?</span>
+            <NavLink className="nav_link" activeClassName="current" to="/signin">
+              Log In
+            </NavLink>
+          </div>
         </div>
       </main>
       <Footer />

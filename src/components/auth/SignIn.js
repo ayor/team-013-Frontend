@@ -3,6 +3,7 @@ import axios from 'axios';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import { NavLink } from 'react-router-dom';
 
 class SignIn extends Component {
   constructor(props) {
@@ -91,6 +92,12 @@ class SignIn extends Component {
                 </button>
               </form>
             </div>
+          </div>
+          <div className="switch_link">
+            <span className=" p-2">Don't have an account?</span>
+            <NavLink className="nav_link" activeClassName="current" to="/signup">
+              Sign Up
+            </NavLink>
           </div>
         </main>
         <Footer />
