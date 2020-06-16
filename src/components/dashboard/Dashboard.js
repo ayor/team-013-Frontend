@@ -18,7 +18,8 @@ const instituteInfo = [
   { name: 'courseOfStudy', iconType: 'book-reader' },
   { name: 'levelOfEducation', iconType: 'graduation-cap' },
   { name: 'gpa', iconType: 'award' },
-  { name: 'yearOfExperience', iconType: 'star-half-alt' }];
+  { name: 'yearOfExperience', iconType: 'star-half-alt' }
+];
 
 const contactInfo = [
   { name: 'address', iconType: 'home' },
@@ -68,9 +69,17 @@ class Dashboard extends Component {
     return (
       <div>
         {getData.map((data) => {
-          const educationalBackground = instituteInfo.map(({ name, iconType }) => (<div><Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} />   {data[name]}</div>));
+          const educationalBackground = instituteInfo.map(({ name, iconType }) => (
+            <div>
+              <Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} /> {data[name]}
+            </div>
+          ));
 
-          const userContact = contactInfo.map(({ name, iconType }) => ((<div><Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} />   {data[name]}</div>)));
+          const userContact = contactInfo.map(({ name, iconType }) => (
+            <div>
+              <Icon classType={`fas fa-${iconType}`} iconColor={'#ffd700'} /> {data[name]}
+            </div>
+          ));
           return (
             <ApiContext.Provider value={{
               userName : data.username,
@@ -82,8 +91,8 @@ class Dashboard extends Component {
             <div>
               <main className="main dashboard" key={data._id}>
                 <SideDrawer  loggedIn={this.state.loggedIn}/>
-                <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy} /> <br />
-                <br />
+                <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy} /> 
+               
 
                 <div className="flex-wrap">
                   <div className="flex-item">
@@ -162,17 +171,15 @@ class Dashboard extends Component {
 
                     </div>
                   </div>
-
                 </div>
-
               </main >
               <Footer />
             </div>
             </ApiContext.Provider>
           );
-        })
-        }
-      </div >
+        })}
+        <Footer />
+      </div>
     );
   }
 }

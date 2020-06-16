@@ -28,7 +28,7 @@ const sideDrawer = props => {
 
                         <div className="sidedrawer-footer-right">
                             <p className="footer-company-about">
-                                <h6>About the company</h6>
+                                <span>About the company</span>
         We are a team of individuals focused on providing quality education by improving existing infrastructure.
         <br />
                                 <NavLink to="/aboutus" className="link">
