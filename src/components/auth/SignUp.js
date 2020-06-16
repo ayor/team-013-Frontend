@@ -7,6 +7,7 @@ import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
 import SideDrawer from '../SideDrawer/SideDrawer';
 import ApiContext from '../Context/ApiContext';
+
 import { NavLink } from 'react-router-dom';
 
 const SignUp = (props) => {
