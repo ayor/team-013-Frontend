@@ -1,24 +1,33 @@
 import React from 'react';
-import useForm from 'react-hook-form';
+//import  from 'react-hook-form';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import SideDrawer from '../SideDrawer/SideDrawer';
+import ApiContext from '../Context/ApiContext';
 
 const ContactUs = (props) => {
   const { showSuccess, showFailed } = new Alert();
   const { register, handleSubmit, errors } = useForm();
+  const [sideDrawerStatus , setSideDrawer] = useState(false);
+
   const onSubmit = (data) => {
     showSuccess('Yippy! Thanks for contacting Us');
     props.history.push('/');
   };
   return (
-    <div>
-      <div className="main contact">
-        <Navbar />
-        <div className="ui white text container" style={{ padding: '2rem' }}>
-          <h1 className="text-center" style={{ paddingTop: '4rem' }}>
-            Contact Us
-          </h1>
+
+    <ApiContext.Provider value={{
+      sideDrawerStatus : sideDrawerStatus,
+      setSideDrawer : (()=> setSideDrawer(!sideDrawerStatus))
+    }}>
+    <div className="main contact">
+      <SideDrawer />
+      <Navbar />
+      <div className="ui white text container" style={{ padding: '2rem' }}>
+        <h1 className="text-center" style={{ paddingTop: '4rem' }}>
+          Contact Us
+        </h1>
 
           <form className="ui form" onSubmit={handleSubmit(onSubmit)}>
             <h3 style={{ paddingTop: '4rem' }}>Gat something to say? We'll be glad to hear from you</h3>
@@ -115,9 +124,9 @@ const ContactUs = (props) => {
             </button>
           </form>
         </div>
-      </div>
       <Footer />
     </div>
+    </ApiContext.Provider>
   );
 };
 
