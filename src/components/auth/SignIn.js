@@ -3,7 +3,8 @@ import axios from 'axios';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-
+import ApiContext from '../Context/ApiContext';
+import SideDrawer from '../SideDrawer/SideDrawer';
 
 class SignIn extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class SignIn extends Component {
     this.state = {
       loginKey: '',
       password: '',
-      show: false
+      show: false,
+      sideDrawerStatus : false
     };
     const { showSuccess, showFailed } = new Alert();
 
@@ -20,6 +22,7 @@ class SignIn extends Component {
 
     this.successAlert = showSuccess.bind(this);
     this.failedAlert = showFailed.bind(this);
+    this.setSideDrawer = this.setSideDrawer.bind(this);
   }
 
   handleChange(event) {
@@ -27,6 +30,10 @@ class SignIn extends Component {
     this.setState({
       [name]: value
     });
+  }
+
+  setSideDrawer(){    
+    this.setState({sideDrawerStatus : !this.state.sideDrawerStatus})
   }
 
   handleSubmit(event) {
@@ -51,8 +58,13 @@ class SignIn extends Component {
 
   render() {
     return (
+      <ApiContext.Provider value={{
+        sideDrawerStatus : this.state.sideDrawerStatus,
+        setSideDrawer : this.setSideDrawer
+      }}>
       <div>
         <main className="main main-bg">
+          <SideDrawer />
           <Navbar />
           <h3 className="form-header text-center" style={{
             padding: '4rem', paddingBottom: '2rem'
@@ -71,6 +83,7 @@ class SignIn extends Component {
         </main>
         <Footer />
       </div>
+      </ApiContext.Provider>
     );
   }
 }

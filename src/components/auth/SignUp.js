@@ -1,14 +1,19 @@
 /* eslint-disable no-debugger */
-import React from 'react';
+import React, { useState } from 'react';
 import useForm from 'react-hook-form';
 import axios from 'axios';
 import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import SideDrawer from '../SideDrawer/SideDrawer';
+import ApiContext from '../Context/ApiContext';
 
 const SignUp = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const { showSuccess, showFailed } = new Alert();
+
+  const [sideDrawerStatus , setSideDrawer] = useState(false);
+    
 
   const fileHandle = (event) => {
     event.preventDefault();
@@ -52,8 +57,14 @@ const SignUp = (props) => {
   };
 
   return (
+    <ApiContext.Provider value={{
+      sideDrawerStatus : sideDrawerStatus,
+      setSideDrawer : (()=>setSideDrawer(!sideDrawerStatus))
+    }}>
+
     <div>
       <main className="main main-bg">
+        <SideDrawer />
         <Navbar home="Home" signin="Sign In" />
         <div className="wrap trans-bg">
           <h2
@@ -380,6 +391,7 @@ const SignUp = (props) => {
       </main>
       <Footer />
     </div>
+    </ApiContext.Provider>
   );
 };
 

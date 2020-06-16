@@ -4,6 +4,7 @@ import logo from '../../image/felt-teachers-logo.png';
 import Hamburger from '../../Hamburger';
 import Close from '../../Close';
 import Icon from '../Icon';
+import ApiContext from '../Context/ApiContext';
 
 const Navbar = (props) => {
   let navbar = (
@@ -88,7 +89,11 @@ const Navbar = (props) => {
   return (
     <nav>
       {navbar}
-      <Hamburger />
+      <ApiContext.Consumer>{
+        context =>
+          <Hamburger clicked={context.setSideDrawer}/>
+          }
+      </ApiContext.Consumer>
       <Close />
     </nav>
   );

@@ -3,7 +3,8 @@ import Counter from './Counter';
 import Questions from './Questions';
 import axios from 'axios';
 import ScorePage from './ScorePage';
-import Alert from '../alert/alert';
+import ApiContext from '../Context/ApiContext';
+import Timer from './Timer';
 
 const token = localStorage.getItem('token');
 
@@ -16,28 +17,31 @@ const authAxios = axios.create({
 class QuestionModal extends Component {
     state = {
         counter: 10,
-        dismiss: false,
+        showQuestions: false,
         questions: [],
         questionIndex: 0,
         numberOfQuestions: 0,
         hasEndedTest: false,
         selectedOption: '',
         correctAnswers: [],
-        questionIsClosed: false
+        questionIsClosed: false,
+        loadingMessage: 'Questions are loading'
 
     }
 
     componentDidMount() {
-
-        this.startCountDown();
+        // this.startCountDown();
         if (this.props.course === 'english' || this.props.course === 'mathematics') {
             authAxios.post('https://teachers-placement-backend.herokuapp.com/api/questions', { course: this.props.course })
                 .then(({ data }) => {
                     this.setState({
                         questions: data.data.data,
-                    })
+                    });
+                    this.setState({ showQuestions: true });
                 }
-                ).catch(err => console.log(err));
+                ).catch(err => {
+                    this.setState({ loadingMessage: err.message });
+                });
         } else {
             authAxios.post('https://teachers-placement-backend.herokuapp.com/api/questions', { course: this.props.course })
                 .then(({ data }) => {
@@ -52,32 +56,26 @@ class QuestionModal extends Component {
 
                             this.setState({
                                 questions: [...courseQuestions, ...englishQuestions]
-                            })
+                            });
+                            this.setState({ showQuestions: true });
                         });
-
                 }
-                ).catch(err => this.showFailed(err.message));
+                ).catch(err => this.setState({ loadingMessage: err.message }));
         }
     }
 
-    startCountDown = () => {
-        let newCounter = this.state.counter;
+    nextQuestionHandler = (event) => {
 
-        let countDown = setInterval(() => {
-            this.setState({ counter: newCounter-- });
-            if (this.state.counter == 0) {
-                clearInterval(countDown);
-                this.setState({ dismiss: true });
-            }
-        }, 1000)
-
-    }
-
-    nextQuestionHandler = () => {
+        let options = event.target.parentElement.children[4].children
         let numberofQuestions = this.state.questions.length - 1;
         let correctAnswers = [...this.state.correctAnswers];
         let questions = [...this.state.questions];
         let currentQuestion = questions[this.state.questionIndex];
+
+        //remove the classes from the opions
+        for (let i = 0; i < options.length; i++) {
+            options[i].className = 'otherOptions';
+        }
 
         if (this.state.questionIndex < numberofQuestions) {
             let oldQuestionIndex = this.state.questionIndex;
@@ -96,11 +94,12 @@ class QuestionModal extends Component {
     }
 
     optionIsSelectedHandler = (event, answer, answerIndex) => {
+
         //check if the answer entered is correct
         let element = event.target;
         let parentElement = element.parentElement;
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < parentElement.children.length; i++) {
             if (i === answerIndex) {
                 // parentElement.children[i].style.backgroundColor = '#9999ff';
 
@@ -115,29 +114,48 @@ class QuestionModal extends Component {
 
     closeModalHandler = () => {
         this.setState({ questionIsClosed: true });
+        this.removeBackDrop();
+    }
+
+    removeBackDrop = () => {
         setTimeout(() => {
             this.props.closemodal();
         }, 400);
-       
+    }
 
+    examTimer = () => {}
+
+    sendResult = () =>{
+        authAxios.post('https://teachers-placement-backend.herokuapp.com/api/teachers/me/score', 
+        { score: this.state.correctAnswers.length })
     }
 
     render() {
-        let questionClassName = 'questionModal';        
+        let questionClassName = 'questionModal';
 
         if (this.state.questionIsClosed) {
             questionClassName = 'dismissed';
         }
         // let classes = ['questionModal']
         let questions = (<Counter counter={this.state.counter} />);
-        if (this.state.dismiss) {
+        if (this.state.showQuestions) {
+          
+            //REVEAL QUESTIONS
             questions = (
-                <Questions
-                    questionIndex={this.state.questionIndex}
-                    clickedOption={this.optionIsSelectedHandler}
-                    questions={this.state.questions}
-                    btnClicked={this.nextQuestionHandler} />)
+                <div> 
+                    <Timer                   
+                    endTest={()=>this.setState({hasEndedTest: true})}
+                    sendResult={this.sendResult}
+                    />
+                    <Questions
+                        questionIndex={this.state.questionIndex}
+                        clickedOption={this.optionIsSelectedHandler}
+                        questions={this.state.questions}
+                        btnClicked={this.nextQuestionHandler}
+                         />
+                </div>)
         }
+
         if (this.state.hasEndedTest) {
             questions = (
                 <ScorePage
@@ -147,9 +165,13 @@ class QuestionModal extends Component {
             // questions = (<ScorePage score='30' total={this.state.questions.length} goToHome={this.setState({})}/>)
         }
         return (
-            <div className={questionClassName}>
-                {questions}
-            </div>
+            <ApiContext.Provider value={{
+                loadingMessage: this.state.loadingMessage
+            }}>
+                <div className={questionClassName}>
+                    {questions}
+                </div>
+            </ApiContext.Provider>
         )
     }
 };

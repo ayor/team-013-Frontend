@@ -1,10 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
-
-const AboutUs = () => (
+import ApiContext from '../Context/ApiContext';
+import SideDrawer from '../SideDrawer/SideDrawer';
+const AboutUs = () => {
+  const [sideDrawerStatus, setSideDrawer] = useState(false);
+  return(
+    <ApiContext.Provider value={{
+      sideDrawerStatus,
+       setSideDrawer: (() => setSideDrawer(!sideDrawerStatus))
+    }}>
   <div>
     <div className="contact wrap">
+     
+      <SideDrawer />
+      
       <Navbar />
       <div className="container" style={{ padding: '2rem' }}>
         <h1 className="text-center">About Us</h1>
@@ -39,6 +49,7 @@ const AboutUs = () => (
     </div>
     <Footer />
   </div>
-);
+  </ApiContext.Provider>
+)};
 
 export default AboutUs;
