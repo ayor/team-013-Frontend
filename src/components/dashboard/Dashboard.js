@@ -92,7 +92,10 @@ class Dashboard extends Component {
                 <main className="main dashboard" key={data._id}>
                   <SideDrawer loggedIn={this.state.loggedIn} />
                   <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy} />
-
+<br/>
+<br/>
+<br/>
+<br/>
 
                   <div className="flex-wrap">
                     <div className="flex-item">
