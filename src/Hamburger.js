@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Hamburger = (props) => {
     return (
         <button
@@ -12,5 +13,7 @@ const Hamburger = (props) => {
         </button>
     )
 };
+
+
 
 export default Hamburger;
