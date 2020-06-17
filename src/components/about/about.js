@@ -46,6 +46,7 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+    
     </div>
     <Footer />
   </div>

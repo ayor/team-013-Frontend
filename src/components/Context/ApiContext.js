@@ -6,6 +6,7 @@ const apiContext = React.createContext({
     email: '',
     courseOfStudy: '',
     sideDrawerStatus: false,
+    showCloseButton: false,
     setSideDrawer: () => { }
 })
 

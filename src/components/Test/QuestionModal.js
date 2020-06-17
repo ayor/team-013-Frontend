@@ -25,13 +25,14 @@ class QuestionModal extends Component {
         selectedOption: '',
         correctAnswers: [],
         questionIsClosed: false,
-        loadingMessage: 'Questions are loading'
+        loadingMessage: 'Questions are loading...',
+        showCloseButton : false
 
     }
 
     componentDidMount() {
         // this.startCountDown();
-        if (this.props.course === 'english' || this.props.course === 'mathematics') {
+        if (this.props.course === 'english' || this.props.course === 'mathematics') { 
             authAxios.post('https://teachers-placement-backend.herokuapp.com/api/questions', { course: this.props.course })
                 .then(({ data }) => {
                     this.setState({
@@ -40,7 +41,8 @@ class QuestionModal extends Component {
                     this.setState({ showQuestions: true });
                 }
                 ).catch(err => {
-                    this.setState({ loadingMessage: err.message });
+                    this.setState({ loadingMessage: 'Looks like your questions are not available..' });
+                    this.setState({showCloseButton : true});
                 });
         } else {
             authAxios.post('https://teachers-placement-backend.herokuapp.com/api/questions', { course: this.props.course })
@@ -60,7 +62,10 @@ class QuestionModal extends Component {
                             this.setState({ showQuestions: true });
                         });
                 }
-                ).catch(err => this.setState({ loadingMessage: err.message }));
+                ).catch(err => {
+                    this.setState({ loadingMessage: 'Looks like your questions are not available..' });
+                    this.setState({showCloseButton : true});
+                });
         }
     }
 
@@ -113,6 +118,12 @@ class QuestionModal extends Component {
     }
 
     closeModalHandler = () => {
+        this.sendResult();
+        this.setState({ questionIsClosed: true });
+        this.removeBackDrop();
+    }
+
+    closeModal_beforeQuestions = ( ) => {
         this.setState({ questionIsClosed: true });
         this.removeBackDrop();
     }
@@ -125,9 +136,10 @@ class QuestionModal extends Component {
 
     examTimer = () => {}
 
-    sendResult = () =>{
+    sendResult = () => {
         authAxios.post('https://teachers-placement-backend.herokuapp.com/api/teachers/me/score', 
-        { score: this.state.correctAnswers.length })
+         { score: ((this.state.correctAnswers.length/40)*100).toFixed(2) })
+        //.then(res=>(console.log(res.data.data['approved'])));
     }
 
     render() {
@@ -137,7 +149,7 @@ class QuestionModal extends Component {
             questionClassName = 'dismissed';
         }
         // let classes = ['questionModal']
-        let questions = (<Counter counter={this.state.counter} />);
+        let questions = (<Counter click={this.closeModal_beforeQuestions} />);
         if (this.state.showQuestions) {
           
             //REVEAL QUESTIONS
@@ -166,7 +178,8 @@ class QuestionModal extends Component {
         }
         return (
             <ApiContext.Provider value={{
-                loadingMessage: this.state.loadingMessage
+                loadingMessage: this.state.loadingMessage,
+                showCloseButton : this.state.showCloseButton
             }}>
                 <div className={questionClassName}>
                     {questions}

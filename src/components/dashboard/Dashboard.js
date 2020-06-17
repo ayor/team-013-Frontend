@@ -35,9 +35,9 @@ class Dashboard extends Component {
     this.state = {
       teacherData: '',
       loggedIn: false,
-      sideDrawerStatus : false
+      sideDrawerStatus: false
     };
-    this.setSideDrawer = this.setSideDrawer.bind(this);   
+    this.setSideDrawer = this.setSideDrawer.bind(this);
   }
 
   componentDidMount() {
@@ -58,13 +58,13 @@ class Dashboard extends Component {
     }
   }
 
-  setSideDrawer(){    
-    this.setState({sideDrawerStatus : !this.state.sideDrawerStatus})
+  setSideDrawer() {
+    this.setState({ sideDrawerStatus: !this.state.sideDrawerStatus })
   }
 
   render() {
     const getData = [this.state.teacherData];
-    console.log(getData);
+    //console.log(getData);
 
     return (
       <div>
@@ -82,68 +82,71 @@ class Dashboard extends Component {
           ));
           return (
             <ApiContext.Provider value={{
-              userName : data.username,
-              email  : data.email,
-              courseOfStudy : data.courseOfStudy,
-              sideDrawerStatus : this.state.sideDrawerStatus,
-              setSideDrawer : this.setSideDrawer
+              userName: data.username,
+              email: data.email,
+              courseOfStudy: data.courseOfStudy,
+              sideDrawerStatus: this.state.sideDrawerStatus,
+              setSideDrawer: this.setSideDrawer
             }}>
-            <div>
-              <main className="main dashboard" key={data._id}>
-                <SideDrawer  loggedIn={this.state.loggedIn}/>
-                <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy} /> 
-               
+              <div>
+                <main className="main dashboard" key={data._id}>
+                  <SideDrawer loggedIn={this.state.loggedIn} />
+                  <Navbar signout="Log Out" userName={data.firstName} userName={data.username} takeTest="Take a Test" isLoggedIn={this.state.loggedIn} course={data.courseOfStudy} />
+<br/>
+<br/>
+<br/>
+<br/>
 
-                <div className="flex-wrap">
-                  <div className="flex-item">
-                    <div className="profile-info">
-                      <div className="profile-info-item">
+                  <div className="flex-wrap">
+                    <div className="flex-item">
+                      <div className="profile-info">
+                        <div className="profile-info-item">
+                          <div
+                            className="profile-item"
+                            style={{
+                              borderRadius: '50%',
+                              overflow: 'hidden'
+                            }}
+                          >
+                            <img src={`https://teachers-placement-backend.herokuapp.com/${data.image}`} alt="profile picture" />
+                          </div>
+                        </div>
                         <div
-                          className="profile-item"
+                          className="profile-info-item"
                           style={{
-                            borderRadius: '50%',
-                            overflow: 'hidden'
+                            width: '70%',
+                            textAlign: 'right'
                           }}
                         >
-                          <img src={`https://teachers-placement-backend.herokuapp.com/${data.image}`} alt="profile picture" />
-                        </div>
-                      </div>
-                      <div
-                        className="profile-info-item"
-                        style={{
-                          width: '70%',
-                          textAlign: 'right'
-                        }}
-                      >
-                        <div className="profile-item">
-                          <div>
-                            <h1>{`${data.firstName} ${data.lastName}`}</h1>
-                          </div>
-                          <hr />
+                          <div className="profile-item">
+                            <div>
+                              <h1>{`${data.firstName} ${data.lastName}`}</h1>
+                            </div>
+                            <hr />
 
-                          <div
-                            className="user-rating-info">
-                            <div>
-                              <h6>EMAIL</h6>
-                              <p>{data.email}</p>
-                            </div>
-                            <div>
-                              <h6>ROLE</h6>
-                              <p>{data.role}</p>
-                            </div>
-
-                            <div>
-                              <h6>STATUS</h6>
-                              <p style={{ color: '#228B22' }}>Passed</p>
-                            </div>
-                            <div>
-                              <h6>RATING</h6>
-                              <div className='rating'>
-                                <i className="fas fa-star" aria-hidden="true"></i>
-                                <i className="fas fa-star" aria-hidden="true"></i>
-                                <i className="fas fa-star" aria-hidden="true"></i>
-                                <i className="fas fa-star" aria-hidden="true"></i>
-                                <i className="fas fa-star" aria-hidden="true"></i>
+                            <div
+                              className="user-rating-info">
+                              <div>
+                                <h6>EMAIL</h6>
+                                <p>{data.email}</p>
+                              </div>
+                              <div>
+                                <h6>ROLE</h6>
+                                <p>{data.role}</p>
+                              </div>
+                              <div>
+                                    <h6>STATUS</h6>
+                                <p style={{ color: '#228B22' }}>{data.approved ? 'Approved': 'Not Appproved'}</p>
+                                  </div>
+                              <div>
+                                <h6>RATING</h6>
+                                <div className='rating'>
+                                  <i className="fas fa-star" aria-hidden="true"></i>
+                                  <i className="fas fa-star" aria-hidden="true"></i>
+                                  <i className="fas fa-star" aria-hidden="true"></i>
+                                  <i className="fas fa-star" aria-hidden="true"></i>
+                                  <i className="fas fa-star" aria-hidden="true"></i>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -151,30 +154,29 @@ class Dashboard extends Component {
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className='userInfo'>
-                  <div className='education'>
-                    <div>
-                      <h3>Educational Background</h3>
-                      <div id='institution'>
-                        {educationalBackground}
+                  <div className='userInfo'>
+                    <div className='education'>
+                      <div>
+                        <h3>Educational Background</h3>
+                        <div id='institution'>
+                          {educationalBackground}
+                        </div>
+                      </div>
+                    </div>
+                    <div className='education'>
+                      <div>
+                        <h3>Contact</h3>
+                        <div id='institution'>
+                          {userContact}
+                        </div>
+
                       </div>
                     </div>
                   </div>
-                  <div className='education'>
-                    <div>
-                      <h3>Contact</h3>
-                      <div id='institution'>
-                        {userContact}
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </main >
-              <Footer />
-            </div>
+                </main >
+                <Footer />
+              </div>
             </ApiContext.Provider>
           );
         })}
