@@ -114,13 +114,13 @@ class Dashboard extends Component {
                         <div
                           className="profile-info-item"
                           style={{
-                            width: '70%',
-                            textAlign: 'right'
+                            width: '80%',
+                            textAlign: 'right',                            
                           }}
                         >
                           <div className="profile-item">
-                            <div>
-                              <h1>{`${data.firstName} ${data.lastName}`}</h1>
+                            <div className='username'>
+                              <h2>{`${data.firstName} ${data.lastName}`}</h2>
                             </div>
                             <hr />
 

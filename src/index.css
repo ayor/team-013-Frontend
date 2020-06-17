@@ -472,6 +472,7 @@ input[type='radio'] {
  display: flex;
 justify-content: space-around;
 font-family: 'Helvetica Neue';
+color: black;
 }
 
 .user-rating-info {
@@ -569,6 +570,13 @@ nav .nav-list .nav-item .link.active {
   font-weight: bolder;
 }
 
+.profile-info-item h2{
+  font-size: 25px;
+}
+
+.profile-info-item .username{
+  padding: 0 8px;
+}
 /* some modifications to the flex items  */
 
 .flex-wrap {
