@@ -1261,7 +1261,7 @@ font-size: 20px;
   margin: 35% 15%;
 }
 .get_ready  h3{
-padding: 14%;
+padding: 10%;
 width: 250px;
 height:100px;
 }
@@ -1339,6 +1339,7 @@ flex-direction: column;
   color: white;
   padding: 10px;
   text-align: center;
+  margin-top: 5px;
 }
 
 .footer-company-about span {
@@ -1414,7 +1415,6 @@ flex-direction: column;
 .content_body .getstarted {
   margin: 20% 20%;
 }
-
 }
 /* end of edit  */
 
