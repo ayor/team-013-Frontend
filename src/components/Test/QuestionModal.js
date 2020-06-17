@@ -25,7 +25,7 @@ class QuestionModal extends Component {
         selectedOption: '',
         correctAnswers: [],
         questionIsClosed: false,
-        loadingMessage: 'Questions are loading'
+        loadingMessage: 'Questions are loading...',
 
     }
 
@@ -113,6 +113,7 @@ class QuestionModal extends Component {
     }
 
     closeModalHandler = () => {
+        this.sendResult();
         this.setState({ questionIsClosed: true });
         this.removeBackDrop();
     }
@@ -125,9 +126,10 @@ class QuestionModal extends Component {
 
     examTimer = () => {}
 
-    sendResult = () =>{
+    sendResult = () => {
         authAxios.post('https://teachers-placement-backend.herokuapp.com/api/teachers/me/score', 
-        { score: this.state.correctAnswers.length })
+         { score: ((this.state.correctAnswers.length/40)*100).toFixed(2) })
+        //.then(res=>(console.log(res.data.data['approved'])));
     }
 
     render() {
@@ -166,7 +168,7 @@ class QuestionModal extends Component {
         }
         return (
             <ApiContext.Provider value={{
-                loadingMessage: this.state.loadingMessage
+                loadingMessage: this.state.loadingMessage,
             }}>
                 <div className={questionClassName}>
                     {questions}

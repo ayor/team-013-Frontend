@@ -33,18 +33,19 @@ export class test extends Component {
 
         let questions = (<div className='test-backDrop'><Backdrop clicked={this.backDropClickHandler} /> <QuestionModal course={this.props.match.params.course} closemodal={this.questionCloseHandler} questionIsVisible={this.state.showQuestion} /></div>);
         return (
+            <ApiContext.Provider value={{
+                sideDrawerStatus: this.state.sideDrawerStatus,
+                setSideDrawer: this.setSideDrawer
+            }}>
             <main className='main main-bg'>
 
                 {this.state.showQuestion ? questions : null}
 
-                <ApiContext.Provider value={{
-                    sideDrawerStatus: this.state.sideDrawerStatus,
-                    setSideDrawer: this.setSideDrawer
-                }}>
+              
                     <SideDrawer loggedIn={true} />
 
                     <Navbar signout="Log Out" userName={this.props.match.params.userName} takeTest='Take A Test' isLoggedIn={this.props.loggedIn} /> <br />
-                </ApiContext.Provider>
+              
                 <div className='content'>
                     <div className='content_body'>
                         <h3>Welcome to the test interface </h3>
@@ -54,11 +55,9 @@ export class test extends Component {
                         Take Test  <Icon classType='fas fa-long-arrow-alt-right' />
                     </div>
                 </div>
-
-                <Footer />
-
-
             </main>
+            <Footer />
+            </ApiContext.Provider>
         );
     }
 }

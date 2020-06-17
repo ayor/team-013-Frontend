@@ -57,6 +57,9 @@ body {
   line-height: 1.6;
 }
 
+p {
+  font-family:'Helvetica Neue';
+}
 /* button */
 
 .btn {
@@ -100,7 +103,7 @@ h3 {
 .main {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 75vh;
   background: url('./image/freeimg_45380972freejpg850.jpg');
   background-size: cover;
   background-blend-mode: multiply;
@@ -468,6 +471,7 @@ input[type='radio'] {
 .userInfo {
  display: flex;
 justify-content: space-around;
+font-family: 'Helvetica Neue';
 }
 
 .user-rating-info {
@@ -588,8 +592,8 @@ nav .nav-list .nav-item .link.active {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
-  bottom: 0;
   position: absolute;
+  left: 0;
   text-align: left;
   font: bold 16px sans-serif;
   padding: 55px 50px;
@@ -1183,6 +1187,8 @@ a:hover {
 }
 
 
+
+
 @media (max-width:500px) {
 
   .questionModal{
@@ -1191,13 +1197,12 @@ a:hover {
   .questions{
     margin: 0 5% 5% 5%;
     font-size: 15px;
-  }
-  
-  .questionModal .timer h3{
+  } .questionModal .timer h3{
     padding: 10px 0 10px 180px;
     font-size: 30px;
-
   }
+  
+ 
 
   .questions h3{
     font-size: 15px;
@@ -1363,7 +1368,10 @@ flex-direction: column;
   }
 
 } 
-
+.questionModal .timer h3{
+  padding: 10px;
+  font-size: 30px;
+}
 @media (max-width:375px) {
 
   .content .testButton {
@@ -1400,7 +1408,6 @@ flex-direction: column;
 }
 
 }
-
 
 
 
