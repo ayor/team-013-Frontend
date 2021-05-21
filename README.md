@@ -3,6 +3,8 @@ barebones setup for JavaScript / Node projects replace this with a one-liner phr
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd9d57d9ad4f4568ab85d467404e7d2e)](https://app.codacy.com/gh/BuildForSDG/team-013-QualifiedTeachers?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/team-013-QualifiedTeachers&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://img.shields.io/badge/Code%20Quality-D-red)](https://img.shields.io/badge/Code%20Quality-D-red)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/44cc600c-a5cd-4d80-b20a-45893ef5ec26/deploy-status)](https://app.netlify.com/sites/felt-teachers/deploys)
+
 
 ## About
 
@@ -27,7 +29,27 @@ This Solution helps implement this framework by serving as a sourcing tool for o
 Solution solves the Problem 4 (Quality Education) of the SDG (Building a solution that will help substantially increase the supply of qualified  teachers in our community)
 
 ## Usage
- How would someone use what you have built, include URLs to the deployed app, service e.t.c when you have it setup.
+How will the community make use of this app?
+
+Comunity can make use of this app first by registering, and only qualified teachers are allowed to apply.
+After successful registration, prospective teachers are required to undertake a test to ascertain their knowledge.
+The test and other critiria (e.g. interview etc.) would be used to determine if a prospective teacher is qualified or not.
+Qualified teachers are linked to job placements opportunity within their communities.
+Both qualified and unqualified teachers are provided learning materials to improve their knowledge and unqualified teachers are allowed to re-take the test after a stipulated period.
+Interested applicants can visit this site on https://felt-teachers.netlify.app/
+
+How will a programmer make use of this app?
+
+Get started by cloning the repo git clone https://github.com/BuildForSDG/team-013-Frontend.git
+change into the directory: cd team-013-Frontend
+Install yarn package manager (optional if you prefer npm)
+Start server: yarn start
+Start liniting: yarn lint
+Once the server is started you can use Postman or any other testing tool to test the endpoints.
+Jest: For runnung tests. We strongly recommend that JavaScript projects use Jest.
+Yarn: For installing nodejs packages. (optional if you prefer npm)
+Eslint: For formating code to javascript standard.
+Babel-node: For transforming es6+ to es5
 
 
 ## Setup
@@ -40,7 +62,7 @@ After clonning the repo to your local machine and moving into the cloned folder,
 
 All tests should be written in the `__tests__' folder. There's a sample in there.
 
-This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bundler. It is much simpler that WebPack and the others
+This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bundler. It is much simpler than WebPack and the others
 
 #### Hints
 
@@ -53,8 +75,8 @@ This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bun
 
 ## Authors
 
-Mentor
--Edewor Onyedika
+Program Assistant
+-Femi Akinsiku
 TTL
 -[Taiwo Sunday](https://github.com/taiwosunday99)
 FrontEnd Engineers

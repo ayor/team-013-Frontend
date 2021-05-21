@@ -1,179 +1,406 @@
 /* eslint-disable no-debugger */
-
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import useForm from 'react-hook-form';
+import axios from 'axios';
+import Alert from '../alert/alert';
 import Navbar from '../layout/Navbar';
 import Footer from '../footer/Footer';
+import SideDrawer from '../SideDrawer/SideDrawer';
+import ApiContext from '../Context/ApiContext';
 
-class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: '',
-      lastName: '',
-      DOB: '',
-      email: '',
-      tel: '',
-      password: '',
-      gender: '',
-      address: '',
-      city: '',
-      state: '',
-      institution: '',
-      grade: '',
-      experience: '',
-      course: '',
-      // subject: '',
-      selectedFile: null
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.fileHandle = this.fileHandle.bind(this);
-  }
+import { NavLink } from 'react-router-dom';
 
-  handleChange(event) {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  }
+const SignUp = (props) => {
+  const { register, handleSubmit, errors } = useForm();
+  const { showSuccess, showFailed } = new Alert();
 
-  fileHandle(event) {
-    this.setState({
-      selectedFile: event.target.files[0]
-    });
-  }
+  const [sideDrawerStatus , setSideDrawer] = useState(false);
+    
 
-  handleSubmit(event) {
+  const fileHandle = (event) => {
     event.preventDefault();
-    this.props.history.push('/aftersignup');
-  }
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+  };
 
+  const convertUserObjectToFormData = (user) => {
+    const data = Object.entries(user);
+    const formData = new FormData();
+    data.forEach((item, index, array) => {
+      if (item[0] === 'image') {
+        formData.append(item[0], item[1][0]);
+      } else {
+        formData.append(item[0], item[1]);
+      }
+    });
 
-  render() {
-    return (
+    return formData;
+  };
+
+  const onSubmit = async (data) => {
+    const formData = convertUserObjectToFormData(data);
+
+    const url = 'https://teachers-placement-backend.herokuapp.com/api/teachers';
+
+    await axios
+      .post(url, formData)
+      .then((res) => {
+        if (res.data) {
+          showSuccess('Registration successful');
+          props.history.push('/signin');
+        } else {
+          showFailed('Failed to register user, please try again');
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  return (
+    <ApiContext.Provider value={{
+      sideDrawerStatus : sideDrawerStatus,
+      setSideDrawer : (()=>setSideDrawer(!sideDrawerStatus))
+    }}>
+
+    <div>
       <main className="main main-bg">
+        <SideDrawer />
+        <Navbar home="Home" signin="Sign In" />
         <div className="wrap">
-            <Navbar home='Home' signin='Sign In'/> <br /><br />
-            <h3 className="form-header text-center">Create Your Account</h3>
-            <form className="form text-center" onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <input className="form-control" type="text" name="firstName" value={this.state.firstName} placeholder="First Name" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="lastName" value={this.state.lastName} placeholder="Last Name" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="date" name="DOB" value={this.state.DOB} placeholder="Date of Birth" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="email" name="email" value={this.state.email} placeholder="Email" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="tel" value={this.state.tel} placeholder="Telephone" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <label className="gender-label">
-                  <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  checked={this.state.gender === 'male'}
-                  onChange={this.handleChange} /> Male
-                </label>
-                <label className="gender-label">
-                  <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  checked={this.state.gender === 'female'}
-                  onChange={this.handleChange} /> Female
-                </label>
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="address" value={this.state.address} placeholder="Address" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="city" value={this.state.city} placeholder="City" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="state" value={this.state.state} placeholder="State" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="country" value={this.state.country} placeholder="Country" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="institution" value={this.state.institution} placeholder="University/Polytechnic/other" onChange={this.handleChange} />
-              </div>
-              <div className="form-group">
-                <label className="grade">Graduated with</label>
-                <select
-                name="grade"
-                value={this.state.grade}
-                onChange={this.handleChange}
-                >
-                  <option value="firstClass">First Class</option>
-                  <option value="2.1">Second class upper</option>
-                  <option value="2.2">Second class lower</option>
-                  <option value="3">Third class</option>
-                  <option value="distinction">Distinction</option>
-                  <option value="upperCredit">Upper Credit</option>
-                  <option value="lowerCredit">Lower Credit</option>
-                  <option value="pass">pass</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <input className="form-control" type="text" name="experience" value={this.state.experience} placeholder="Years of Experience" onChange={this.handleChange} />
-              </div>
+          <h1
+            className="text-center"
+            style={{
+              padding: '4rem'
+            }}
+          >
+            Create Your Account
+          </h1>
+          <form className="container-md text-white" encType="multiparty/form-data" onSubmit={handleSubmit(onSubmit)}>
+            <div className="row row-switch">
+              <div className="col">
+                {errors.firstName && (
+                  <p className="text-danger">This field is required and most be a minimun of 3 letters</p>
+                )}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-user"></i>
+                    </span>
+                  </div>
 
-              <div className="form-group">
-                <label className="course">Department</label>
-                <select
-                name="course"
-                value={this.state.course}
-                onChange={this.handleChange}
-                >
-                  <option value="science">Science</option>
-                  <option value="social science">Social Science</option>
-                  <option value="arts">Arts</option>
-                </select>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="firstName"
+                    ref={register({ required: true, minLength: 3 })}
+                    placeholder="First Name"
+                  />
+                </div>
+                {errors.lastName && (
+                  <p className="text-danger">This field is required and must be a minimum of 3 letters</p>
+                )}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-user"></i>
+                    </span>
+                  </div>
+
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="lastName"
+                    ref={register({ required: true, minLength: 3 })}
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="fas fa-at"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                    ref={register}
+                    placeholder="Username"
+                  />
+                </div>
+                {errors.email && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-envelope"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="email"
+                    name="email"
+                    ref={register({ required: true })}
+                    placeholder="Email"
+                  />
+                </div>
+
+                {errors.phone && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-phone-alt"></i>
+                    </span>
+                  </div>
+
+                  <input
+                    className="form-control"
+                    name="phone"
+                    type="tel"
+                    ref={register({ required: true })}
+                    placeholder="Telephone"
+                  />
+                </div>
+                {errors.password && (
+                  <p className="text-danger">This field is required and most be a minimun of 6 letters</p>
+                )}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-lock"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    ref={register({ required: true, minLength: 6 })}
+                    placeholder="Password"
+                  />
+                </div>
+
+                {errors.yearOfExperience && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-sort-numeric-up"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="number"
+                    name="yearOfExperience"
+                    ref={register({ required: true })}
+                    placeholder="Years of Experience"
+                  />
+                </div>
+
+                {errors.school && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-school"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="school"
+                    ref={register({ required: true })}
+                    placeholder="School e.g University of Lagos"
+                  />
+                </div>
+
+                {errors.levelOfEducation && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-certificate"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="levelOfEducation"
+                    ref={register({ required: true })}
+                    placeholder="Qualification e.g Bsc English Education"
+                  />
+                </div>
               </div>
-              {/* <div className="form-group">
-                <label className="subject">Subject</label>
-                <select
-                name="subject"
-                value={this.state.subject}
-                onChange={this.handleChange}
-                >
-                  <option value="computer science">Computer Sc</option>
-                  <option value="mathematics">Social Sc</option>
-                  <option value="biology">Biology</option>
-                  <option value="chemistry">Chemistry</option>
-                  <option value="physics">Physics</option>
-                  <option value="environmental science">Environmental Sc</option>
-                  <option value="political science">Political Sc</option>
-                  <option value="mass communication">Mass Comm</option>
-                  <option value="tourism">Tourism</option>
-                  <option value="journalism">Journalism</option>
-                  <option value="economics">Economics</option>
-                  <option value="crk">C.R.K</option>
-                  <option value="irk">I.R.K</option>
-                  <option value="english">English</option>
-                  <option value="french">French</option>
-                </select>
-              </div> */}
-              <div className="form-group profile-pic">
-                <input type="file" onChange={this.fileHandle} />
+              <div className="col">
+                {errors.gpa && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <span className="text-danger" style={{ paddingRight: '1rem' }}>
+                    *
+                  </span>
+                  <label className="">Grade:</label>
+                  <span style={{ paddingRight: '1rem' }}></span>
+                  <select name="gpa" ref={register({ required: true })}>
+                    <option value="firstClass">First Class</option>
+                    <option value="2.1">Second Class Upper</option>
+                    <option value="2.2">Second Class Lower</option>
+                    <option value="3">Third Class</option>
+                    <option value="distinction">Distinction</option>
+                    <option value="upperCredit">Upper Credit</option>
+                    <option value="lowerCredit">Lower Credit</option>
+                    <option value="pass">Pass</option>
+                  </select>
+                </div>
+
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="addon-wrapping">
+                      <i className="fas fa-map-pin"></i>
+                    </span>
+                  </div>
+                  <input className="form-control" type="text" name="address" ref={register} placeholder="Address" />
+                </div>
+
+                {errors.state && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-map-marker"></i>
+                    </span>
+                  </div>
+                  <select className="form-control" name="state" ref={register({ required: true })}>
+                    <option value="">State</option>
+                    <option value="AB">Abia</option>
+                    <option value="AD">Adamawa</option>
+                    <option value="AK">Akwa Ibom</option>
+                    <option value="AN">Anambra</option>
+                    <option value="BA">Bauchi</option>
+                    <option value="BY">Bayelsa</option>
+                    <option value="BE">Benue</option>
+                    <option value="BO">Borno</option>
+                    <option value="CR">Cross River</option>
+                    <option value="DE">Delta</option>
+                    <option value="EB">Ebonyi</option>
+                    <option value="ED">Edo</option>
+                    <option value="EK">Ekiti</option>
+                    <option value="EN">Enugu</option>
+                    <option value="GO">Gombe</option>
+                    <option value="IM">Imo</option>
+                    <option value="JI">Jigawa</option>
+                    <option value="KD">Kaduna</option>
+                    <option value="KN">Kano</option>
+                    <option value="KT">Katsina</option>
+                    <option value="KE">Kebbi</option>
+                    <option value="KO">Kogi</option>
+                    <option value="KW">Kwara</option>
+                    <option value="LA">Lagos</option>
+                    <option value="NA">Nasarawa</option>
+                    <option value="NI">Niger</option>
+                    <option value="OG">Ogun</option>
+                    <option value="ON">Ondo</option>
+                    <option value="OS">Osun</option>
+                    <option value="OY">Oyo</option>
+                    <option value="PL">Plateau</option>
+                    <option value="RI">Rivers</option>
+                    <option value="SO">Sokoto</option>
+                    <option value="TA">Taraba</option>
+                    <option value="YO">Yobe</option>
+                    <option value="ZA">Zamfara</option>
+                    <option value="FC">FCT</option>
+                  </select>
+                </div>
+
+                {errors.country && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text text-danger" id="addon-wrapping">
+                      <i className="fas fa-globe-africa"></i>
+                    </span>
+                  </div>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="country"
+                    ref={register({ required: true })}
+                    placeholder="Country"
+                  />
+                </div>
+
+                {errors.subjectToTeach && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <span className="text-danger" style={{ paddingRight: '1rem' }}>
+                    *
+                  </span>
+                  <label className="">What subject would you like to teach?</label>
+                  <span style={{ paddingRight: '1rem' }}></span>
+                  <select name="courseOfStudy" ref={register({ required: true })}>
+                    <option value="english">English language</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="biology">Biology</option>
+                    <option value="physics">Physics</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="governement">Government</option>
+                    <option value="geography">Geography</option>
+                    <option value="accounting">Accounting</option>
+                    <option value="englishlit">English literature</option>
+                    <option value="crk">Christain Religious Knowledge </option>
+                    <option value="economics">Economics </option>
+                    <option value="irk">Islamic Religious Knowledge </option>
+                    <option value="civicedu">Civic Education </option>
+                    <option value="insurance">Insurance </option>
+                    <option value="currentaffairs">Current Affairs </option>
+                    <option value="history">History </option>
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label>Upload your passport photo</label>
+                  <span style={{ paddingRight: '0.5rem' }}></span>
+                  <input type="file" name="image" ref={register} onChange={fileHandle} />
+                </div>
+
+                <div className="input-group form-group">
+                  <span className="text-danger">*</span>
+                  <label className="">
+                    <input type="radio" name="gender" value="male" ref={register} /> Male
+                  </label>
+                  <label className="">
+                    <input type="radio" name="gender" value="female" ref={register} defaultChecked /> Female
+                  </label>
+                </div>
+
+                {errors.dateOfBirth && <p className="text-danger">This field is required</p>}
+                <div className="input-group form-group">
+                  <div className="input-group-prepend">
+                    <span className="text-danger" id="addon-wrapping">
+                      *
+                    </span>
+                  </div>
+                  <span style={{ paddingRight: '1rem' }}></span>
+                  <label>Date of Birth</label>
+                  <span style={{ paddingRight: '1rem' }}></span>
+                  <input className="form-control" type="date" name="dateOfBirth" ref={register({ required: true })} />
+                </div>
               </div>
-              <button className="btnSubmit" type="submit">Create Account</button>
-            </form>
+            </div>
+
+            <div className="d-flex justify-content-center">
+              <button className="btnSubmit" type="submit">
+                Create Account
+              </button>
+            </div>
+          </form>
+          <div className="switch_link">
+            <span className="p-2">Already have an account?</span>
+            <NavLink className="nav_link" activeClassName="current" to="/signin">
+              Log In
+            </NavLink>
           </div>
-        <Footer />
+        </div>
       </main>
-    );
-  }
-}
+      <Footer />
+    </div>
+    </ApiContext.Provider>
+  );
+};
 
 export default SignUp;

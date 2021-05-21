@@ -1,19 +1,8 @@
-// import app from './app';
-
-// const startApp = async () => {
-//   const header = document.querySelector('[data-app-name]');
-//   if (!header) return;
-
-//   const programName = await app();
-//   header.textContent = programName;
-// };
-
-// document.addEventListener('DOMContentLoaded', startApp);
-
+import 'alertifyjs/build/css/alertify.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('div'));
+ReactDOM.render(<App/>, document.getElementById('div'));
